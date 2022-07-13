@@ -16,14 +16,13 @@ const components = {
   twitter: Twitter,
 }
 
-type Props = {
+type SocialIconProps = {
   kind: keyof typeof components
   href: string
-  size: number
-
+  size?: number
 }
 
-const SocialIcon = ({ kind, href, size = 8 }: Props) => {
+const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
   if (!href || (kind === 'mail' && !/^mailto:\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/.test(href)))
     return null
 

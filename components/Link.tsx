@@ -1,9 +1,8 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
+import React from 'react'
 import Link from 'next/link'
 
-
-interface Props extends React.ComponentPropsWithoutRef<"a"> {
-  href: string;
+interface Props extends React.ComponentPropsWithoutRef<'a'> {
+  href: string
 }
 
 const CustomLink = ({ href, ...rest }: Props) => {

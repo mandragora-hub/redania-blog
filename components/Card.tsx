@@ -3,7 +3,7 @@ import Link from './Link'
 
 type Props = {
   title: string
-  description: string 
+  description: string
   imgSrc: string
   href: string
 }

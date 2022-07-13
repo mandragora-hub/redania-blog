@@ -1,10 +1,11 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import siteMetadata from '@/data/siteMetadata'
+import { AuthorDetailsTypes } from '@/common/types'
 
 type OgImageTypes = {
-  '@type': 'ImageObject',
-  url: string,
+  '@type': string
+  url: string
 }
 
 interface BasicSEOProps {
@@ -16,6 +17,17 @@ interface SEOProps extends BasicSEOProps {
   ogType: string
   ogImage: string | OgImageTypes[]
   twImage: string
+  canonicalUrl?: string
+}
+
+interface SEOBlogProps {
+  authorDetails?: AuthorDetailsTypes[]
+  title?: string
+  summary?: string
+  date?: string
+  lastmod?: string
+  url?: string
+  images?: string[]
   canonicalUrl?: string
 }
 
@@ -97,8 +109,8 @@ export const BlogSEO = ({
   url,
   images = [],
   canonicalUrl,
-}) => {
-  const router = useRouter()
+}: SEOBlogProps) => {
+  // const router = useRouter()
   const publishedAt = new Date(date).toISOString()
   const modifiedAt = new Date(lastmod || date).toISOString()
   let imagesArr =

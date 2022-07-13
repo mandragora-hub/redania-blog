@@ -19,10 +19,11 @@
       "@/data/*": ["data/*"],
       "@/layouts/*": ["layouts/*"],
       "@/lib/*": ["lib/*"],
-      "@/css/*": ["css/*"]
+      "@/css/*": ["css/*"],
+      "@/common/*": ["common/*"]
     },
     "baseUrl": "."
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "scripts/compose.js", "scripts/generate-sitemap.js", "scripts/next-remote-watch.js", "scripts/next-remote-watch.js"],
   "exclude": ["node_modules"]
 }

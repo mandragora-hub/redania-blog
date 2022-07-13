@@ -1,3 +1,4 @@
+import React from 'react'
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
 import Logo from '@/data/logo.svg'
@@ -8,8 +9,8 @@ import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 
 type Props = {
-  children: React.ReactNode,
-};
+  children: React.ReactNode
+}
 
 const LayoutWrapper = ({ children }: Props) => {
   return (
