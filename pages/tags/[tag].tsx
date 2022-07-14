@@ -1,3 +1,5 @@
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { ParsedUrlQuery } from 'querystring'
 import { TagSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
 import ListLayout from '@/layouts/ListLayout'
@@ -7,10 +9,11 @@ import { getAllTags } from '@/lib/tags'
 import kebabCase from '@/lib/utils/kebabCase'
 import fs from 'fs'
 import path from 'path'
+import { FrontMatterType } from '@/common/types'
 
 const root = process.cwd()
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const tags = await getAllTags('blog')
 
   return {
@@ -23,10 +26,20 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }) {
+interface Params extends ParsedUrlQuery {
+  tag: string
+}
+
+type TagPageProps = {
+  posts: FrontMatterType[]
+  tag: string
+}
+
+export const getStaticProps: GetStaticProps<TagPageProps, Params> = async (context) => {
+  const params = context.params!
   const allPosts = await getAllFilesFrontMatter('blog')
   const filteredPosts = allPosts.filter(
-    (post) => post.draft !== true && post.tags.map((t) => kebabCase(t)).includes(params.tag)
+    (post) => post.draft !== true && post.tags?.map((t) => kebabCase(t)).includes(params.tag)
   )
 
   // rss
@@ -40,7 +53,7 @@ export async function getStaticProps({ params }) {
   return { props: { posts: filteredPosts, tag: params.tag } }
 }
 
-export default function Tag({ posts, tag }) {
+export default function Tag({ posts, tag }: TagPageProps) {
   // Capitalize first letter and convert space to dash
   const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
   return (

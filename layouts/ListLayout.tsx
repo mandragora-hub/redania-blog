@@ -10,7 +10,7 @@ type ListLayoutProps = {
   posts: FrontMatterType[]
   title: string
   initialDisplayPosts?: FrontMatterType[]
-  pagination: PaginationType
+  pagination?: PaginationType
 }
 
 export default function ListLayout({

@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { ParsedUrlQuery } from 'querystring';
+import { ParsedUrlQuery } from 'querystring'
 import fs from 'fs'
 import PageTitle from '@/components/PageTitle'
 import generateRss from '@/lib/generate-rss'
@@ -25,6 +25,13 @@ interface Params extends ParsedUrlQuery {
   slug: string[]
 }
 
+type BlogPageProps = {
+  post: PostType
+  authorDetails: AuthorFrontMatterTypes
+  prev: FrontMatterType
+  next: FrontMatterType
+}
+
 export const getStaticProps: GetStaticProps<BlogPageProps, Params> = async (context) => {
   const params = context.params!
   const allPosts = await getAllFilesFrontMatter('blog')
@@ -46,13 +53,6 @@ export const getStaticProps: GetStaticProps<BlogPageProps, Params> = async (cont
   }
 
   return { props: { post, authorDetails, prev, next } }
-}
-
-type BlogPageProps = {
-  post: PostType
-  authorDetails: AuthorFrontMatterTypes
-  prev: FrontMatterType
-  next: FrontMatterType
 }
 
 export default function Blog({ post, authorDetails, prev, next }: BlogPageProps) {
