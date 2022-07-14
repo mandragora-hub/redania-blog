@@ -3,6 +3,12 @@ export type PaginationType = {
   currentPage: number
 }
 
+export type PostType = {
+  mdxSource: string
+  toc: any
+  frontMatter: FrontMatterType
+}
+
 export type AuthorDetailsTypes = {
   '@type': string
   name: string
@@ -12,14 +18,16 @@ export type AuthorDetailsTypes = {
 
 export type FrontMatterType = {
   slug: string
-  fileName: string
-  date: string
-  title: string
-  images: string[]
-  tags: string[]
-  summary: string
+  fileName?: string
+  date?: string
+  title?: string
+  images?: string[]
+  tags?: string[]
+  summary?: string
   readingTime?: string
   layout?: string
+  authors?: string[]
+  draft?: boolean
 }
 
 export type AuthorFrontMatterTypes = {

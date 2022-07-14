@@ -1,9 +1,11 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
+import { ParsedUrlQuery } from 'querystring';
 import fs from 'fs'
 import PageTitle from '@/components/PageTitle'
 import generateRss from '@/lib/generate-rss'
 import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/mdx'
+import { PostType, FrontMatterType, AuthorFrontMatterTypes } from '@/common/types'
 
 const DEFAULT_LAYOUT = 'PostLayout'
 
@@ -19,13 +21,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-type Props = {
-  params: {
-    slug: string
-  }
+interface Params extends ParsedUrlQuery {
+  slug: string[]
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }: Props) => {
+export const getStaticProps: GetStaticProps<BlogPageProps, Params> = async (context) => {
+  const params = context.params!
   const allPosts = await getAllFilesFrontMatter('blog')
   const postIndex = allPosts.findIndex((post) => formatSlug(post.slug) === params.slug.join('/'))
   const prev = allPosts[postIndex + 1] || null
@@ -47,7 +48,14 @@ export const getStaticProps: GetStaticProps = async ({ params }: Props) => {
   return { props: { post, authorDetails, prev, next } }
 }
 
-export default function Blog({ post, authorDetails, prev, next }) {
+type BlogPageProps = {
+  post: PostType
+  authorDetails: AuthorFrontMatterTypes
+  prev: FrontMatterType
+  next: FrontMatterType
+}
+
+export default function Blog({ post, authorDetails, prev, next }: BlogPageProps) {
   const { mdxSource, toc, frontMatter } = post
 
   return (
