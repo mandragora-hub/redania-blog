@@ -19,15 +19,16 @@ export type AuthorDetailsTypes = {
 export type FrontMatterType = {
   slug: string
   fileName?: string
-  date?: string
-  title?: string
+  date: string
+  title: string
   images?: string[]
-  tags?: string[]
-  summary?: string
+  tags: string[]
+  summary: string
   readingTime?: string
   layout?: string
   authors?: string[]
   draft?: boolean
+  bibliography?: string
 }
 
 export type AuthorFrontMatterTypes = {

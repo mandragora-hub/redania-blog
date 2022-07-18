@@ -32,6 +32,7 @@ type BlogPageProps = {
   next: FrontMatterType
 }
 
+// @ts-ignore
 export const getStaticProps: GetStaticProps<BlogPageProps, Params> = async (context) => {
   const params = context.params!
   const allPosts = await getAllFilesFrontMatter('blog')
