@@ -11,9 +11,13 @@
 # next.js
 /.next/
 /out/
+public/sitemap.xml
 
 # production
 /build
+*.xml
+# rss feed
+/public/feed.xml
 
 # misc
 .DS_Store
@@ -30,6 +34,8 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+.env
 
 # typescript
 *.tsbuildinfo

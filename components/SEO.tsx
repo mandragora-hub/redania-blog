@@ -22,9 +22,9 @@ interface SEOProps extends BasicSEOProps {
 
 interface SEOBlogProps {
   authorDetails?: AuthorDetailsTypes[]
-  title?: string
-  summary?: string
-  date?: string
+  title: string
+  summary: string
+  date: string
   lastmod?: string
   url?: string
   images?: string[]

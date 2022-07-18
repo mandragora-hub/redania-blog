@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 import siteMetadata from '@/data/siteMetadata'
 
@@ -7,17 +7,17 @@ type NewsletterFormProps = {
 }
 
 const NewsletterForm = ({ title = 'Subscribe to the newsletter' }: NewsletterFormProps) => {
-  const inputEl = useRef(null)
+  const inputEl = useRef<HTMLInputElement>(null)
   const [error, setError] = useState(false)
   const [message, setMessage] = useState('')
   const [subscribed, setSubscribed] = useState(false)
 
-  const subscribe = async (e) => {
+  const subscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     const res = await fetch(`/api/${siteMetadata.newsletter.provider}`, {
       body: JSON.stringify({
-        email: inputEl.current.value,
+        email: inputEl.current!.value,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }: NewsletterFor
       return
     }
 
-    inputEl.current.value = ''
+    inputEl.current!.value = ''
     setError(false)
     setSubscribed(true)
     setMessage('Successfully! 🎉 You are now subscribed.')

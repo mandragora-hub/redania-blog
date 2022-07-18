@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import mailchimp from '@mailchimp/mailchimp_marketing'
+import { handleApiError } from '@/common/utilities'
 
 mailchimp.setConfig({
   apiKey: process.env.MAILCHIMP_API_KEY,
@@ -15,12 +16,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
-    const test = await mailchimp.lists.addListMember(process.env.MAILCHIMP_AUDIENCE_ID, {
+    const test = await mailchimp.lists.addListMember(process.env.MAILCHIMP_AUDIENCE_ID || '', {
       email_address: email,
       status: 'subscribed',
     })
     return res.status(201).json({ error: '' })
   } catch (error) {
-    return res.status(500).json({ error: error.message || error.toString() })
+    return handleApiError(res, error)
   }
 }

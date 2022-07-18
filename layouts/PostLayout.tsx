@@ -18,7 +18,10 @@ type PostLayoutProps = {
   children: React.ReactNode
 }
 
-const editUrl = (fileName: string) => `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`
+const editUrl = (fileName: string | undefined) => {
+  if (!fileName) return ''
+  return `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`
+}
 const discussUrl = (slug: string) =>
   `https://mobile.twitter.com/search?q=${encodeURIComponent(
     `${siteMetadata.siteUrl}/blog/${slug}`

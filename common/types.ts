@@ -29,8 +29,15 @@ export type BasicFrontMatterType = {
 export interface ExtendFrontMatterType extends BasicFrontMatterType {
   slug: string
   fileName?: string
+  date: string
+  title: string
+  images?: string[]
+  tags: string[]
+  summary: string
   readingTime?: string
   layout?: string
+  authors?: string[]
+  bibliography?: string
 }
 
 export type AuthorFrontMatterTypes = {

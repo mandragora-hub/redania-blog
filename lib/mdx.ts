@@ -114,7 +114,7 @@ export async function getAllFilesFrontMatter(folder: string): Promise<FrontMatte
 
   const files = getAllFilesRecursively(prefixPaths)
 
-  const allFrontMatter: { slug: any; date: string }[] = []
+  const allFrontMatter: FrontMatterType[] = []
 
   // @ts-ignore
   files.forEach((file) => {
@@ -128,9 +128,12 @@ export async function getAllFilesFrontMatter(folder: string): Promise<FrontMatte
     const { data: frontmatter } = matter(source)
     if (frontmatter.draft !== true) {
       allFrontMatter.push({
-        ...frontmatter,
         slug: formatSlug(fileName),
         date: frontmatter.date ? new Date(frontmatter.date).toISOString() : '',
+        title: frontmatter.title,
+        summary: frontmatter.summary,
+        tags: frontmatter.tags,
+        ...frontmatter,
       })
     }
   })

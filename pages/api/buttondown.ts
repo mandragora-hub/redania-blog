@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { handleApiError } from '@/common/utilities'
 
 export default async function buttonDown(req: NextApiRequest, res: NextApiResponse<any>) {
   const { email } = req.body
@@ -26,6 +27,6 @@ export default async function buttonDown(req: NextApiRequest, res: NextApiRespon
 
     return res.status(201).json({ error: '' })
   } catch (error) {
-    return res.status(500).json({ error: error.message || error.toString() })
+    return handleApiError(res, error)
   }
 }

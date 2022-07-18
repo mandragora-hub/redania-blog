@@ -5,7 +5,7 @@ type PreProps = {
 }
 
 const Pre = (props: PreProps) => {
-  const textInput = useRef(null)
+  const textInput = useRef<HTMLDivElement>(null)
   const [hovered, setHovered] = useState(false)
   const [copied, setCopied] = useState(false)
 
@@ -17,11 +17,14 @@ const Pre = (props: PreProps) => {
     setCopied(false)
   }
   const onCopy = () => {
-    setCopied(true)
-    navigator.clipboard.writeText(textInput.current.textContent)
-    setTimeout(() => {
-      setCopied(false)
-    }, 2000)
+    const copiedText = textInput.current!.textContent
+    if (copiedText) {
+      setCopied(true)
+      navigator.clipboard.writeText(copiedText)
+      setTimeout(() => {
+        setCopied(false)
+      }, 2000)
+    }
   }
 
   return (

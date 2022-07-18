@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { handleApiError } from '@/common/utilities'
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -27,6 +28,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     return res.status(201).json({ error: '' })
   } catch (error) {
-    return res.status(500).json({ error: error.message || error.toString() })
+    return handleApiError(res, error)
   }
 }
