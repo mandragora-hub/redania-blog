@@ -6,7 +6,7 @@ export type PaginationType = {
 export type PostType = {
   mdxSource: string
   toc: any
-  frontMatter: FrontMatterType
+  frontMatter: ExtendFrontMatterType
 }
 
 export type AuthorDetailsTypes = {
@@ -16,18 +16,21 @@ export type AuthorDetailsTypes = {
   twitter?: string
 }
 
-export type FrontMatterType = {
+export type BasicFrontMatterType = {
+  title: string
+  date: string
+  tags: string[]
+  summary: string
+  authors?: string[]
+  images?: string[]
+  draft: boolean
+}
+
+export interface ExtendFrontMatterType extends BasicFrontMatterType {
   slug: string
   fileName?: string
-  date?: string
-  title?: string
-  images?: string[]
-  tags?: string[]
-  summary?: string
   readingTime?: string
   layout?: string
-  authors?: string[]
-  draft?: boolean
 }
 
 export type AuthorFrontMatterTypes = {
