@@ -21,24 +21,20 @@ export type BasicFrontMatterType = {
   date: string
   tags: string[]
   summary: string
-  authors?: string[]
   images?: string[]
-  draft: boolean
+  draft?: boolean
 }
 
 export interface ExtendFrontMatterType extends BasicFrontMatterType {
   slug: string
   fileName?: string
-  date: string
-  title: string
-  images?: string[]
-  tags: string[]
-  summary: string
   readingTime?: string
   layout?: string
   authors?: string[]
   bibliography?: string
 }
+
+export type FrontMatterType = ExtendFrontMatterType
 
 export type AuthorFrontMatterTypes = {
   name: string
