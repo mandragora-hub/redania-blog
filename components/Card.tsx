@@ -1,20 +1,18 @@
 import Image from './Image'
 import Link from './Link'
+import formatDate from '@/lib/utils/formatDate'
 
 type Props = {
   title: string
+  date: string
   description: string
   imgSrc?: string
   href?: string
 }
 
-const Card = ({ title, description, imgSrc, href }: Props) => (
-  <div className="md p-4 md:w-1/2" style={{ maxWidth: '544px' }}>
-    <div
-      className={`${
-        imgSrc && 'h-full'
-      }  overflow-hidden rounded-md border-2 border-gray-200 border-opacity-60 dark:border-gray-700`}
-    >
+const Card = ({ title, description, imgSrc, href, date }: Props) => (
+  <div className="md p-2" style={{ maxWidth: '544px' }}>
+    <div className={`${imgSrc && 'h-full'}  overflow-hidden rounded-md`}>
       {imgSrc &&
         (href ? (
           <Link href={href} aria-label={`Link to ${title}`}>
@@ -35,7 +33,16 @@ const Card = ({ title, description, imgSrc, href }: Props) => (
             height={306}
           />
         ))}
-      <div className="p-6">
+      <div className="space-y-2 py-2">
+        <div className="flex items-center justify-between">
+          <div className="rounded border border-gray-400 py-1.5 px-2.5 font-medium hover:bg-gray-100">
+            Tags
+          </div>
+          <h2 className="text-base font-semibold">
+            <time dateTime={date}>{formatDate(date)}</time>
+          </h2>
+        </div>
+
         <h2 className="mb-3 text-2xl font-bold leading-8 tracking-tight">
           {href ? (
             <Link href={href} aria-label={`Link to ${title}`}>
@@ -46,15 +53,6 @@ const Card = ({ title, description, imgSrc, href }: Props) => (
           )}
         </h2>
         <p className="prose mb-3 max-w-none text-gray-500 dark:text-gray-400">{description}</p>
-        {href && (
-          <Link
-            href={href}
-            className="text-base font-medium leading-6 text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-            aria-label={`Link to ${title}`}
-          >
-            Learn more &rarr;
-          </Link>
-        )}
       </div>
     </div>
   </div>
