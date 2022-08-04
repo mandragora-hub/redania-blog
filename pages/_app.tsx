@@ -2,7 +2,7 @@ import '@/css/tailwind.css'
 import '@/css/prism.css'
 import 'katex/dist/katex.css'
 
-import '@fontsource/league-mono'
+import '@fontsource/red-hat-mono/variable.css'
 
 import { ThemeProvider } from 'next-themes'
 import Head from 'next/head'

@@ -20,46 +20,48 @@ export default function Home({ posts }: { posts: FrontMatterType[] }) {
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
-      {/* Greeting */}
-      <div className="space-y-2 pt-6 pb-8 md:space-y-4">
-        <h1>Hey, I'm Dhanraj 👋🏾</h1>
-        <div className="space-y-2 pt-3 pb-4">
-          <p>I write code.</p>
-          <p>For the web. And mobile.</p>
-          <p>Also sometimes for the toaster.</p>
-        </div>
-        <p>I'm also on that bird app.</p>
-      </div>
-      {/* Recent Post */}
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            Recent Post
+        {/* Greeting */}
+        <div className="space-y-2 pt-6 pb-8 md:space-y-4">
+          <h1 className="text-4xl font-extrabold">
+            Hey, I'm Dhanraj <span className="animate-wave">👋</span>
           </h1>
-          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-            {siteMetadata.description}
-          </p>
+          <div className="space-y-2 pt-3 pb-4">
+            <p>I write code.</p>
+            <p>For the web. And mobile.</p>
+            <p>Also sometimes for the toaster.</p>
+          </div>
+          <p>I'm also on that bird app.</p>
         </div>
-        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 2xl:grid-cols-3">
-          {!posts.length && 'No posts found.'}
-          {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
-            const { slug, date, title, summary, tags } = frontMatter
-            return (
-              <article key={slug} className="py-4">
-                <Card
-                  title={title}
-                  date={date}
-                  description={summary}
-                  imgSrc={'/static/images/time-machine.jpg'}
-                  href={'f'}
-                />
-              </article>
-            )
-          })}
+        {/* Recent Post */}
+        <div className="container mx-auto">
+          <div className="my-4 flex flex-col">
+            <span className="text-4xl font-bold leading-9 tracking-tight text-gray-800 dark:text-gray-100">
+              Recent Post
+            </span>
+            <span className="bg-accent mb-4 inline-block h-0.5 w-20 rounded"></span>
+          </div>
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 2xl:grid-cols-3">
+            {!posts.length && 'No posts found.'}
+            {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
+              const { slug, date, title, summary, tags } = frontMatter
+              return (
+                <article key={slug}>
+                  <Card
+                    title={title}
+                    date={date}
+                    description={summary}
+                    imgSrc={'/static/images/time-machine.jpg'}
+                    href={'f'}
+                  />
+                </article>
+              )
+            })}
+          </div>
         </div>
       </div>
       {posts.length > MAX_DISPLAY && (
-        <div className="flex justify-end text-base font-medium leading-6">
+        <div className="my-8 flex justify-end text-2xl font-medium leading-6">
           <Link
             href="/blog"
             className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
