@@ -11,24 +11,25 @@ type Props = {
 }
 
 const Card = ({ title, description, imgSrc, href, date }: Props) => (
-  <div className="md p-2" style={{ maxWidth: '544px' }}>
-    <div className={`${imgSrc && 'h-full'}  overflow-hidden rounded-md`}>
+  <div className="max-w-full">
+    <div className={`${imgSrc && 'h-full'}`}>
       {imgSrc &&
         (href ? (
           <Link href={href} aria-label={`Link to ${title}`}>
-            <Image
-              alt={title}
-              src={imgSrc}
-              className="object-cover object-center md:h-36 lg:h-48"
-              width={544}
-              height={306}
-            />
+            <div className="relative max-h-4 overflow-hidden rounded-lg pb-60">
+              <Image
+                alt={title}
+                src={imgSrc}
+                layout="fill" // required
+                objectFit="cover" // change to suit your needs
+              />
+            </div>
           </Link>
         ) : (
           <Image
             alt={title}
             src={imgSrc}
-            className="object-cover object-center md:h-36 lg:h-48"
+            className="h-56 max-w-full object-cover object-center"
             width={544}
             height={306}
           />

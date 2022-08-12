@@ -34,14 +34,14 @@ export default function Home({ posts }: { posts: FrontMatterType[] }) {
           <p>I'm also on that bird app.</p>
         </div>
         {/* Recent Post */}
-        <div className="container mx-auto">
+        <div className="mx-auto">
           <div className="my-4 flex flex-col">
             <span className="text-4xl font-bold leading-9 tracking-tight text-gray-800 dark:text-gray-100">
               Recent Post
             </span>
             <span className="bg-accent mb-4 inline-block h-0.5 w-20 rounded"></span>
           </div>
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 2xl:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
             {!posts.length && 'No posts found.'}
             {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
               const { slug, date, title, summary, tags } = frontMatter
@@ -64,7 +64,7 @@ export default function Home({ posts }: { posts: FrontMatterType[] }) {
         <div className="my-8 flex justify-end text-2xl font-medium leading-6">
           <Link
             href="/blog"
-            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+            className="hover-underline-animation p-4"
             aria-label="all posts"
           >
             All Posts &rarr;
