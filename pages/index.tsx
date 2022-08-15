@@ -23,7 +23,7 @@ export default function Home({ posts }: { posts: FrontMatterType[] }) {
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         {/* Greeting */}
         <div className="space-y-2 pt-6 pb-8 md:space-y-4">
-          <h1 className="text-4xl font-extrabold">
+          <h1 className="text-4xl font-extrabold tracking-tight">
             Hey, I'm{' '}
             <Link
               className="bg-growing-underline bg-gradient-to-r from-yellow-200 to-yellow-200"
@@ -35,20 +35,28 @@ export default function Home({ posts }: { posts: FrontMatterType[] }) {
               👋🏼
             </span>
           </h1>
-          <div className="space-y-2 pt-3 pb-4">
-            <p>I write code.</p>
-            <p>For the web. And mobile.</p>
-            <p>Also sometimes for the toaster.</p>
-          </div>
-          <p>I'm also on that bird app.</p>
+          <p className="font-mono text-lg tracking-tighter text-gray-600 dark:text-gray-400">
+            I write code.
+            <br />
+            For the web. And mobile.
+            <br />
+            Also sometimes for the toaster.
+          </p>
+          <p className="text-lg font-light tracking-tighter text-gray-600 dark:text-gray-400">
+            I'm also on{' '}
+            <Link
+              className="hover-underline-animation inline-flex flex-row items-center gap-2 font-bold"
+              href="http://twiter.com"
+            >
+              that bird app.
+            </Link>
+          </p>
         </div>
         {/* Recent Post */}
         <div className="mx-auto">
           <div className="my-4 flex flex-col">
-            <span className="text-4xl font-bold leading-9 tracking-tight text-gray-800 dark:text-gray-100">
-              Recent Post
-            </span>
-            <span className="bg-accent mb-4 inline-block h-0.5 w-20 rounded"></span>
+            <span className="text-4xl font-bold text-gray-800 dark:text-gray-100">Recent Post</span>
+            <span className="mb-4 inline-block h-0.5 w-20 rounded bg-accent"></span>
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
             {!posts.length && 'No posts found.'}

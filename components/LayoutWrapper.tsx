@@ -42,10 +42,10 @@ const LayoutWrapper = ({ children }: Props) => {
             <Link href="/" aria-label={siteMetadata.headerTitle}>
               <div className="flex items-center justify-between">
                 <div className="mr-3">
-                  <Logo />
+                  <Logo className="h-20 w-20 hover:animate-spin" />
                 </div>
                 {typeof siteMetadata.headerTitle === 'string' ? (
-                  <div className="hidden h-6 text-2xl font-semibold sm:block">
+                  <div className="hover-underline-animation hidden text-2xl font-semibold sm:block">
                     {siteMetadata.headerTitle}
                   </div>
                 ) : (
@@ -61,7 +61,7 @@ const LayoutWrapper = ({ children }: Props) => {
                   key={link.title}
                   href={link.href}
                   title={link.title}
-                  className="hover-underline-animation hover-underline-animation-black inline-flex flex-row items-end p-2 font-semibold text-gray-900 dark:text-gray-100"
+                  className="hover-underline-animation inline-flex flex-row items-end p-2 font-semibold text-gray-900 dark:text-gray-100"
                   startIcon={link.icon}
                   classNameIcon="mr-2 h-5 w-5"
                 />

@@ -26,14 +26,14 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['Red Hat Mono', ...defaultTheme.fontFamily.mono],
+        sans: ['Red Hat Mono', ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        primary: colors.teal,
+        primary: colors.yellow,
         gray: colors.neutral,
       },
       backgroundColor: {
-        accent: colors.teal,
+        accent: colors.yellow[800],
       },
       typography: (theme) => ({
         DEFAULT: {
