@@ -24,7 +24,16 @@ export default function Home({ posts }: { posts: FrontMatterType[] }) {
         {/* Greeting */}
         <div className="space-y-2 pt-6 pb-8 md:space-y-4">
           <h1 className="text-4xl font-extrabold">
-            Hey, I'm Dhanraj <span className="animate-wave">👋</span>
+            Hey, I'm{' '}
+            <Link
+              className="bg-growing-underline bg-gradient-to-r from-yellow-200 to-yellow-200"
+              href="/about"
+            >
+              Mandragora
+            </Link>{' '}
+            <span className="wave" role="img">
+              👋🏼
+            </span>
           </h1>
           <div className="space-y-2 pt-3 pb-4">
             <p>I write code.</p>
@@ -61,12 +70,8 @@ export default function Home({ posts }: { posts: FrontMatterType[] }) {
         </div>
       </div>
       {posts.length > MAX_DISPLAY && (
-        <div className="my-8 flex justify-end text-2xl font-medium leading-6">
-          <Link
-            href="/blog"
-            className="hover-underline-animation p-4"
-            aria-label="all posts"
-          >
+        <div className="my-8 flex justify-end text-2xl font-bold leading-6">
+          <Link href="/blog" className="hover-underline-animation p-4" aria-label="all posts">
             All Posts &rarr;
           </Link>
         </div>

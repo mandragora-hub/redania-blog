@@ -1,8 +1,9 @@
+import { ArchiveIcon, CodeIcon, HashtagIcon } from '@heroicons/react/outline'
+
 const headerNavLinks = [
-  { href: '/blog', title: 'Blog' },
-  { href: '/tags', title: 'Tags' },
-  { href: '/projects', title: 'Projects' },
-  { href: '/about', title: 'About' },
+  { href: '/blog', title: 'Blog', icon: ArchiveIcon },
+  { href: '/Snippet', title: 'Snippet', icon: CodeIcon },
+  { href: '/tags', title: 'Tags', icon: HashtagIcon },
 ]
 
 export default headerNavLinks

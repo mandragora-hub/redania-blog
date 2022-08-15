@@ -1,4 +1,8 @@
 module.exports = {
+  globals: {
+    JSX: true,
+    React: true
+  },
   root: true,
   env: {
     browser: true,

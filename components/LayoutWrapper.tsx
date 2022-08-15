@@ -2,7 +2,7 @@ import React from 'react'
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
 import Logo from '@/data/logo.svg'
-import Link from './Link'
+import Link from 'next/link'
 import SectionContainer from './SectionContainer'
 import Footer from './Footer'
 import MobileNav from './MobileNav'
@@ -10,6 +10,27 @@ import ThemeSwitch from './ThemeSwitch'
 
 type Props = {
   children: React.ReactNode
+}
+
+type HeaderLinkProps = {
+  key: React.Key
+  href: string
+  title: string
+  startIcon: JSX.Element
+  className: string
+  classNameIcon: string
+}
+
+const HeaderLink = ({ key, href, title, startIcon, className, classNameIcon }: HeaderLinkProps) => {
+  const Icon = startIcon
+  return (
+    <Link key={key} href={href}>
+      <a className={className}>
+        <Icon className={classNameIcon} />
+        {title}
+      </a>
+    </Link>
+  )
 }
 
 const LayoutWrapper = ({ children }: Props) => {
@@ -33,16 +54,17 @@ const LayoutWrapper = ({ children }: Props) => {
               </div>
             </Link>
           </div>
-          <div className="flex items-center text-base leading-5">
-            <div className="hidden sm:block">
+          <div className="flex items-center text-base leading-4">
+            <div className="">
               {headerNavLinks.map((link) => (
-                <Link
+                <HeaderLink
                   key={link.title}
                   href={link.href}
-                  className="p-1 font-medium text-gray-900 dark:text-gray-100 sm:p-4"
-                >
-                  {link.title}
-                </Link>
+                  title={link.title}
+                  className="hover-underline-animation hover-underline-animation-black inline-flex flex-row items-end p-2 font-semibold text-gray-900 dark:text-gray-100"
+                  startIcon={link.icon}
+                  classNameIcon="mr-2 h-5 w-5"
+                />
               ))}
             </div>
             <ThemeSwitch />
