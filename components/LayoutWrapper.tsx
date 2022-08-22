@@ -13,7 +13,6 @@ type Props = {
 }
 
 type HeaderLinkProps = {
-  key: React.Key
   href: string
   title: string
   startIcon: JSX.Element
@@ -21,10 +20,10 @@ type HeaderLinkProps = {
   classNameIcon: string
 }
 
-const HeaderLink = ({ key, href, title, startIcon, className, classNameIcon }: HeaderLinkProps) => {
+const HeaderLink = ({ href, title, startIcon, className, classNameIcon }: HeaderLinkProps) => {
   const Icon = startIcon
   return (
-    <Link key={key} href={href}>
+    <Link href={href}>
       <a className={className}>
         <Icon className={classNameIcon} />
         {title}
