@@ -36,24 +36,20 @@ const LayoutWrapper = ({ children }: Props) => {
   return (
     <SectionContainer>
       <div className="flex h-screen flex-col justify-between">
-        <header className="flex items-center justify-between py-10">
-          <div>
-            <Link href="/" aria-label={siteMetadata.headerTitle}>
-              <div className="flex items-center justify-between">
-                <div className="mr-3">
-                  <Logo className="h-20 w-20 hover:animate-spin" />
+        <header className="flex flex-col items-center justify-between gap-4 py-10 sm:flex-row">
+          <Link href="/" aria-label={siteMetadata.headerTitle}>
+            <div className="group flex items-center justify-between">
+              <Logo className="mr-1 h-10 w-10 text-gray-900 group-hover:animate-spin dark:text-gray-100" />
+              {typeof siteMetadata.headerTitle === 'string' ? (
+                <div className="hover-underline-animation hidden text-2xl font-semibold sm:block">
+                  {siteMetadata.headerTitle}
                 </div>
-                {typeof siteMetadata.headerTitle === 'string' ? (
-                  <div className="hover-underline-animation hidden text-2xl font-semibold sm:block">
-                    {siteMetadata.headerTitle}
-                  </div>
-                ) : (
-                  siteMetadata.headerTitle
-                )}
-              </div>
-            </Link>
-          </div>
-          <div className="flex items-center text-base leading-4">
+              ) : (
+                siteMetadata.headerTitle
+              )}
+            </div>
+          </Link>
+          <div className="flex items-center text-base leading-5">
             <div className="">
               {headerNavLinks.map((link) => (
                 <HeaderLink
@@ -67,7 +63,6 @@ const LayoutWrapper = ({ children }: Props) => {
               ))}
             </div>
             <ThemeSwitch />
-            <MobileNav />
           </div>
         </header>
         <main className="mb-auto">{children}</main>

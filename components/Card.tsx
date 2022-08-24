@@ -6,56 +6,41 @@ type Props = {
   title: string
   date: string
   description: string
-  imgSrc?: string
-  href?: string
+  imgSrc: string
+  href: string
 }
 
 const Card = ({ title, description, imgSrc, href, date }: Props) => (
-  <div className="max-w-full">
-    <div className={`${imgSrc && 'h-full'}`}>
-      {imgSrc &&
-        (href ? (
-          <Link href={href} aria-label={`Link to ${title}`}>
-            <div className="relative max-h-4 overflow-hidden rounded-lg pb-60">
-              <Image
-                alt={title}
-                src={imgSrc}
-                layout="fill" // required
-                objectFit="cover" // change to suit your needs
-              />
-            </div>
-          </Link>
-        ) : (
-          <Image
-            alt={title}
-            src={imgSrc}
-            className="h-56 max-w-full object-cover object-center"
-            width={544}
-            height={306}
-          />
-        ))}
-      <div className="space-y-2 py-2">
-        <div className="flex items-center justify-between">
-          <div className="rounded border border-gray-400 py-1.5 px-2.5 font-medium hover:bg-gray-100">
+  <div className="bg-day dark:bg-night group w-full bg-opacity-50 dark:bg-opacity-50">
+    <Link
+      className="c-card block transform overflow-hidden rounded-lg bg-transparent transition duration-500 group-hover:scale-105"
+      href={href}
+      aria-label={`Link to ${title}`}
+    >
+      <div className="relative max-h-4 overflow-hidden rounded-lg pb-60">
+        <Image
+          className="absolute inset-0 h-full w-full transform object-cover opacity-80 transition duration-700 group-hover:scale-110 group-hover:opacity-100 dark:opacity-70"
+          alt={title}
+          src={imgSrc}
+          layout="fill" // required
+          objectFit="cover" // change to suit your needs
+        />
+      </div>
+
+      <div className="space-y-2 py-4">
+        <div className="inline-flex w-full items-center justify-between">
+          <span className="inline-block rounded border border-gray-700 py-1.5 px-2.5 text-xs font-medium hover:bg-gray-100">
             Tags
-          </div>
-          <h2 className="text-base font-semibold">
-            <time dateTime={date}>{formatDate(date)}</time>
-          </h2>
+          </span>
+          <time className="text-base font-semibold" dateTime={date}>
+            {formatDate(date)}
+          </time>
         </div>
 
-        <h2 className="mb-3 text-2xl font-bold leading-8">
-          {href ? (
-            <Link href={href} aria-label={`Link to ${title}`}>
-              {title}
-            </Link>
-          ) : (
-            title
-          )}
-        </h2>
-        <p className="prose mb-3 max-w-none text-gray-500 dark:text-gray-400">{description}</p>
+        <h2 className="mb-3 text-2xl font-bold leading-8">{title}</h2>
+        <p className="text-sm tracking-wider text-gray-600 dark:text-gray-300">{description}</p>
       </div>
-    </div>
+    </Link>
   </div>
 )
 

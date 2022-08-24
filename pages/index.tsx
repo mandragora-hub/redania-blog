@@ -58,7 +58,7 @@ export default function Home({ posts }: { posts: FrontMatterType[] }) {
             <span className="text-4xl font-bold text-gray-800 dark:text-gray-100">Recent Post</span>
             <span className="mb-4 inline-block h-0.5 w-20 rounded bg-accent"></span>
           </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
             {!posts.length && 'No posts found.'}
             {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
               const { slug, date, title, summary, tags } = frontMatter
@@ -69,7 +69,7 @@ export default function Home({ posts }: { posts: FrontMatterType[] }) {
                     date={date}
                     description={summary}
                     imgSrc={'/static/images/time-machine.jpg'}
-                    href={'f'}
+                    href={'/blog/tt'}
                   />
                 </article>
               )
