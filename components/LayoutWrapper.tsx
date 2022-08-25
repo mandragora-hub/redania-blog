@@ -5,31 +5,11 @@ import Logo from '@/data/logo.svg'
 import Link from 'next/link'
 import SectionContainer from './SectionContainer'
 import Footer from './Footer'
-import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
+import HeaderIcon from './header-icons'
 
 type Props = {
   children: React.ReactNode
-}
-
-type HeaderLinkProps = {
-  href: string
-  title: string
-  startIcon: JSX.Element
-  className: string
-  classNameIcon: string
-}
-
-const HeaderLink = ({ href, title, startIcon, className, classNameIcon }: HeaderLinkProps) => {
-  const Icon = startIcon
-  return (
-    <Link href={href}>
-      <a className={className}>
-        <Icon className={classNameIcon} />
-        {title}
-      </a>
-    </Link>
-  )
 }
 
 const LayoutWrapper = ({ children }: Props) => {
@@ -51,15 +31,8 @@ const LayoutWrapper = ({ children }: Props) => {
           </Link>
           <div className="flex items-center text-base leading-5">
             <div className="">
-              {headerNavLinks.map((link) => (
-                <HeaderLink
-                  key={link.title}
-                  href={link.href}
-                  title={link.title}
-                  className="hover-underline-animation inline-flex flex-row items-end p-2 font-semibold text-gray-900 dark:text-gray-100"
-                  startIcon={link.icon}
-                  classNameIcon="mr-2 h-5 w-5"
-                />
+              {headerNavLinks.map(({ kind, href }) => (
+                <HeaderIcon key={kind} kind={kind} href={href} />
               ))}
             </div>
             <ThemeSwitch />
