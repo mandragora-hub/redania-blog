@@ -41,7 +41,7 @@ export default function PostLayout({
   prev,
   children,
 }: PostLayoutProps) {
-  const { slug, fileName, date, title, images, tags } = frontMatter
+  const { slug, fileName, date, title, images, tags, readingTime } = frontMatter
 
   return (
     <SectionContainer>
@@ -52,22 +52,34 @@ export default function PostLayout({
       />
       <ScrollTopAndComment />
       <article>
-        <div className="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
-          <header className="pt-6 xl:pb-6">
-            <div className="space-y-1 text-center">
-              <dl className="space-y-10">
-                <div>
+        <div className="">
+          <header className="flex flex-col items-start space-y-4 border-b border-double border-gray-400 py-4 dark:border-gray-700">
+            <div>
+              <PageTitle>{title}</PageTitle>
+            </div>
+            <div className="flex w-full flex-wrap place-content-between items-center gap-4">
+              <div className="mx-2">
+                {tags.map((tag) => {
+                  return (
+                    <Link key={tag} href={`/tags${tag}`}>
+                      <span className="hover:border-accent mx-2 inline-block rounded border border-gray-700 py-1 px-2 text-xs font-medium">
+                        {tag}
+                      </span>
+                    </Link>
+                  )
+                })}
+              </div>
+              <dl>
+                <div className="flex flex-row items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
                   <dt className="sr-only">Published on</dt>
-                  <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                  <dd>
                     <time dateTime={date}>
                       {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
                     </time>
                   </dd>
+                  •<span>{readingTime.text}</span>
                 </div>
               </dl>
-              <div>
-                <PageTitle>{title}</PageTitle>
-              </div>
             </div>
           </header>
           <div

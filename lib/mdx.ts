@@ -129,6 +129,7 @@ export async function getAllFilesFrontMatter(folder: string): Promise<FrontMatte
     if (frontmatter.draft !== true) {
       allFrontMatter.push({
         slug: formatSlug(fileName),
+        readingTime: readingTime(source),
         date: frontmatter.date ? new Date(frontmatter.date).toISOString() : '',
         title: frontmatter.title,
         summary: frontmatter.summary,

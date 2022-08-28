@@ -1,3 +1,5 @@
+import type { ReadTimeResults } from 'reading-time'
+
 export type PaginationType = {
   totalPages: number
   currentPage: number
@@ -28,7 +30,7 @@ export type BasicFrontMatterType = {
 export interface ExtendFrontMatterType extends BasicFrontMatterType {
   slug: string
   fileName?: string
-  readingTime?: string
+  readingTime: ReadTimeResults
   layout?: string
   authors?: string[]
   bibliography?: string
