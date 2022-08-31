@@ -68,8 +68,9 @@ export default function Home({ posts }: { posts: FrontMatterType[] }) {
                     title={title}
                     date={date}
                     description={summary}
+                    tag={tags[0]}
                     imgSrc={'/static/images/time-machine.jpg'}
-                    href={'/blog/tt'}
+                    href={`/blog/${slug}`}
                   />
                 </article>
               )

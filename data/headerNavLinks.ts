@@ -1,6 +1,6 @@
 type HeaderNavLinksType = {
   href: string
-  kind: 'Blog' | 'Snippet' | 'Tag'
+  kind: 'Blog' | 'Snippet' | 'Tags'
 }
 
 const headerNavLinks: HeaderNavLinksType[] = [

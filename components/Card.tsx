@@ -8,10 +8,11 @@ type Props = {
   description: string
   imgSrc: string
   href: string
+  tag: string
 }
 
-const Card = ({ title, description, imgSrc, href, date }: Props) => (
-  <div className="bg-day dark:bg-night group w-full bg-opacity-50 dark:bg-opacity-50">
+const Card = ({ title, description, imgSrc, href, date, tag }: Props) => (
+  <div className="group w-full bg-day bg-opacity-50 dark:bg-night dark:bg-opacity-50">
     <Link
       className="c-card block transform overflow-hidden rounded-lg bg-transparent transition duration-500 group-hover:scale-105"
       href={href}
@@ -30,7 +31,7 @@ const Card = ({ title, description, imgSrc, href, date }: Props) => (
       <div className="space-y-2 py-4">
         <div className="inline-flex w-full items-center justify-between">
           <span className="inline-block rounded border border-gray-700 py-1.5 px-2.5 text-xs font-medium hover:bg-gray-100">
-            Tags
+            {tag}
           </span>
           <time className="text-base font-semibold" dateTime={date}>
             {formatDate(date)}

@@ -33,7 +33,9 @@ module.exports = {
         gray: colors.neutral,
       },
       backgroundColor: {
-        accent: colors.yellow[800],
+        accent: colors.stone[900],
+        day: colors.yellow[50],
+        night: colors.gray[900],
       },
       typography: (theme) => ({
         DEFAULT: {
