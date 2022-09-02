@@ -1,5 +1,11 @@
 import type { ReadTimeResults } from 'reading-time'
 
+export type TocHeading = {
+  value: string
+  url: string
+  depth: number
+}
+
 export type PaginationType = {
   totalPages: number
   currentPage: number
@@ -7,7 +13,7 @@ export type PaginationType = {
 
 export type PostType = {
   mdxSource: string
-  toc: any
+  toc: TocHeading[]
   frontMatter: ExtendFrontMatterType
 }
 

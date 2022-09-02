@@ -21,7 +21,7 @@ import rehypeKatex from 'rehype-katex'
 import rehypeCitation from 'rehype-citation'
 import rehypePrismPlus from 'rehype-prism-plus'
 import rehypePresetMinify from 'rehype-preset-minify'
-import { FrontMatterType, PostType } from '@/common/types'
+import { TocHeading, FrontMatterType, PostType } from '@/common/types'
 
 const root = process.cwd()
 
@@ -56,7 +56,7 @@ export async function getFileBySlug(type: string, slug: string | string[]): Prom
     process.env.ESBUILD_BINARY_PATH = path.join(root, 'node_modules', 'esbuild', 'bin', 'esbuild')
   }
 
-  let toc: never[] = []
+  let toc: TocHeading[] = []
 
   const { code, frontmatter } = await bundleMDX({
     source,

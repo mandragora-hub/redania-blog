@@ -7,7 +7,7 @@ import TOCInline from './TOCInline'
 import Pre from './Pre'
 import { BlogNewsletterForm } from './NewsletterForm'
 import { MDXComponents as MDXComponentsBasicProps } from 'mdx/types'
-import { AuthorFrontMatterTypes, FrontMatterType } from '@/common/types'
+import { TocHeading, AuthorFrontMatterTypes, FrontMatterType } from '@/common/types'
 
 export type MDXComponentsWrapperProps = {
   layout?: string
@@ -37,7 +37,7 @@ export type MDXLayoutRendererProps = {
   layout: string
   mdxSource: string
   frontMatter: FrontMatterType
-  toc?: any
+  toc: TocHeading[]
   authorDetails?: AuthorFrontMatterTypes
   prev?: FrontMatterType
   next?: FrontMatterType

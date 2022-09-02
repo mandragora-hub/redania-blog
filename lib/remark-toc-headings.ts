@@ -1,16 +1,21 @@
-// @ts-nocheck
-
 import { visit } from 'unist-util-visit'
-import { slug } from 'github-slugger'
+import BananaSlug from 'github-slugger'
 import { toString } from 'mdast-util-to-string'
+import { Heading } from 'mdast'
+import { Parent } from 'unist'
+import { TocHeading } from '@/common/types'
 
-export default function remarkTocHeadings(options) {
-  return (tree) =>
-    visit(tree, 'heading', (node, index, parent) => {
+type OptionsProps = {
+  exportRef: TocHeading[]
+}
+
+export default function remarkTocHeadings(options: OptionsProps) {
+  return (tree: Parent) =>
+    visit(tree, 'heading', (node: Heading) => {
       const textContent = toString(node)
       options.exportRef.push({
         value: textContent,
-        url: '#' + slug(textContent),
+        url: '#' + BananaSlug.slug(textContent),
         depth: node.depth,
       })
     })

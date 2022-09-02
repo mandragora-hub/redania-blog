@@ -3,15 +3,15 @@ import Link from '@/components/Link'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
 import { BlogSEO } from '@/components/SEO'
-import Image from '@/components/Image'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import Comments from '@/components/comments'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
-import { AuthorDetailsTypes, FrontMatterType } from '@/common/types'
+import { TocHeading, AuthorDetailsTypes, FrontMatterType } from '@/common/types'
 
 type PostLayoutProps = {
   frontMatter: FrontMatterType
+  toc: TocHeading[]
   authorDetails: AuthorDetailsTypes[]
   next: FrontMatterType
   prev: FrontMatterType
@@ -36,12 +36,17 @@ const postDateTemplate: Intl.DateTimeFormatOptions = {
 
 export default function PostLayout({
   frontMatter,
+  toc,
   authorDetails,
   next,
   prev,
   children,
 }: PostLayoutProps) {
   const { slug, fileName, date, title, images, tags, readingTime } = frontMatter
+
+  React.useEffect(() => {
+    console.log(toc)
+  })
 
   return (
     <SectionContainer>
@@ -58,7 +63,7 @@ export default function PostLayout({
               <PageTitle>{title}</PageTitle>
             </div>
             <div className="flex w-full flex-wrap place-content-between items-center gap-4">
-              <div className="mx-2">
+              <div className="-mx-2">
                 {tags.map((tag) => {
                   return (
                     <Link key={tag} href={`/tags${tag}`}>
@@ -82,11 +87,43 @@ export default function PostLayout({
               </dl>
             </div>
           </header>
-          <div
-            className="divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0"
-            style={{ gridTemplateRows: 'auto 1fr' }}
-          >
-            <dl className="pt-6 pb-10 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
+          <div className="divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0">
+            <div className="relative flex flex-col items-center">
+              <img
+                className="my-4 mx-auto overflow-hidden rounded-lg object-cover shadow-lg md:w-3/4"
+                alt={'fsdf'}
+                src="/static/images/time-machine.jpg"
+              />
+              <span className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                Photo by{' '}
+                <a className="text-highlight" href="https://unsplash.com/@markusspiske">
+                  Markus Spiske
+                </a>{' '}
+                on{' '}
+                <a className="text-highlight" href="https://unsplash.com/photos/KTuHfak_EEk">
+                  Unsplash
+                </a>
+              </span>
+            </div>
+            <div className="flex flex-col">
+              <div
+                className="border-day dark:border-night border-2 bg-day bg-opacity-50 dark:bg-night dark:bg-opacity-75 xl:grid xl:grid-cols-4 xl:gap-x-6"
+                style={{ gridTemplateRows: 'auto 1fr' }}
+              >
+                <div className="prose max-w-none pt-10 pb-8 dark:prose-dark xl:col-span-3 xl:row-span-2">
+                  {children}
+                </div>
+                {/* <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
+                  <Link href={discussUrl(slug)} rel="nofollow">
+                    {'Discuss on Twitter'}
+                  </Link>
+                  {` • `}
+                  <Link href={editUrl(fileName)}>{'View on GitHub'}</Link>
+                </div>
+                <Comments frontMatter={frontMatter} /> */}
+              </div>
+            </div>
+            {/* <dl className="pt-6 pb-10 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
               <dt className="sr-only">Authors</dt>
               <dd>
                 <ul className="flex justify-center space-x-8 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8">
@@ -120,18 +157,7 @@ export default function PostLayout({
                   ))}
                 </ul>
               </dd>
-            </dl>
-            <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
-              <div className="prose max-w-none pt-10 pb-8 dark:prose-dark">{children}</div>
-              <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
-                <Link href={discussUrl(slug)} rel="nofollow">
-                  {'Discuss on Twitter'}
-                </Link>
-                {` • `}
-                <Link href={editUrl(fileName)}>{'View on GitHub'}</Link>
-              </div>
-              <Comments frontMatter={frontMatter} />
-            </div>
+            </dl> */}
             <footer>
               <div className="divide-gray-200 text-sm font-medium leading-5 dark:divide-gray-700 xl:col-start-1 xl:row-start-2 xl:divide-y">
                 {tags && (
