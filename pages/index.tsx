@@ -45,7 +45,7 @@ export default function Home({ posts }: { posts: FrontMatterType[] }) {
           <p className="text-lg font-light tracking-tighter text-gray-600 dark:text-gray-400">
             I'm also on{' '}
             <Link
-              className="hover-underline-animation inline-flex flex-row items-center gap-2 font-bold"
+              className="icon-link hover-underline-animation inline-flex flex-row items-center gap-2 font-bold"
               href="http://twiter.com"
             >
               that bird app.

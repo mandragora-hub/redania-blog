@@ -1,7 +1,7 @@
 module.exports = {
   globals: {
     JSX: true,
-    React: true
+    React: true,
   },
   root: true,
   env: {

@@ -18,7 +18,7 @@ const CustomLink = ({ href, ...rest }: Props) => {
   }
 
   if (isAnchorLink) {
-    return <a href={href} {...rest} />
+    return <a className="link-anchor" href={href} {...rest} />
   }
 
   return <a target="_blank" rel="noopener noreferrer" href={href} {...rest} />

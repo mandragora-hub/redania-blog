@@ -29,7 +29,8 @@ module.exports = {
         sans: ['Red Hat Mono', ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        primary: colors.yellow,
+        primary: colors.blue,
+        secondary: colors.stone,
         gray: colors.neutral,
       },
       backgroundColor: {
@@ -43,8 +44,10 @@ module.exports = {
             color: theme('colors.gray.700'),
             a: {
               color: theme('colors.primary.500'),
+              textDecoration: 'none',
               '&:hover': {
                 color: `${theme('colors.primary.600')} !important`,
+                textDecoration: 'underline',
               },
               code: { color: theme('colors.primary.400') },
             },
