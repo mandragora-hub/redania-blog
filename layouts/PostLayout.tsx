@@ -6,6 +6,7 @@ import { BlogSEO } from '@/components/SEO'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import Comments from '@/components/comments'
+import TableOfContents from '@/components/TableOfContents'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import { TocHeading, AuthorDetailsTypes, FrontMatterType } from '@/common/types'
 
@@ -87,7 +88,7 @@ export default function PostLayout({
               </dl>
             </div>
           </header>
-          <div className="divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0">
+          <div className="divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:divide-y-0">
             <div className="relative flex flex-col items-center">
               <img
                 className="my-4 mx-auto overflow-hidden rounded-lg object-cover shadow-lg md:w-3/4"
@@ -113,51 +114,19 @@ export default function PostLayout({
                 <div className="prose max-w-none pt-10 pb-8 dark:prose-dark xl:col-span-3 xl:row-span-2">
                   {children}
                 </div>
-                {/* <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
-                  <Link href={discussUrl(slug)} rel="nofollow">
-                    {'Discuss on Twitter'}
-                  </Link>
-                  {` • `}
-                  <Link href={editUrl(fileName)}>{'View on GitHub'}</Link>
+                <div className="hidden xl:block sticky top-4 xl:top-8">
+                  <TableOfContents toc={toc} />
                 </div>
-                <Comments frontMatter={frontMatter} /> */}
               </div>
+              <div className="border-b border-t border-gray-400 py-4 text-sm dark:border-gray-700">
+                <Link href={discussUrl(slug)} rel="nofollow">
+                  {'Discuss on Twitter'}
+                </Link>
+                {` • `}
+                <Link href={editUrl(fileName)}>{'View on GitHub'}</Link>
+              </div>
+              <Comments frontMatter={frontMatter} />
             </div>
-            {/* <dl className="pt-6 pb-10 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
-              <dt className="sr-only">Authors</dt>
-              <dd>
-                <ul className="flex justify-center space-x-8 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8">
-                  {authorDetails.map((author) => (
-                    <li className="flex items-center space-x-2" key={author.name}>
-                      {author.avatar && (
-                        <Image
-                          src={author.avatar}
-                          width="38px"
-                          height="38px"
-                          alt="avatar"
-                          className="h-10 w-10 rounded-full"
-                        />
-                      )}
-                      <dl className="whitespace-nowrap text-sm font-medium leading-5">
-                        <dt className="sr-only">Name</dt>
-                        <dd className="text-gray-900 dark:text-gray-100">{author.name}</dd>
-                        <dt className="sr-only">Twitter</dt>
-                        <dd>
-                          {author.twitter && (
-                            <Link
-                              href={author.twitter}
-                              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                            >
-                              {author.twitter.replace('https://twitter.com/', '@')}
-                            </Link>
-                          )}
-                        </dd>
-                      </dl>
-                    </li>
-                  ))}
-                </ul>
-              </dd>
-            </dl> */}
             <footer>
               <div className="divide-gray-200 text-sm font-medium leading-5 dark:divide-gray-700 xl:col-start-1 xl:row-start-2 xl:divide-y">
                 {tags && (
@@ -206,6 +175,41 @@ export default function PostLayout({
                 </Link>
               </div>
             </footer>
+            {/* <dl className="pt-6 pb-10 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
+              <dt className="sr-only">Authors</dt>
+              <dd>
+                <ul className="flex justify-center space-x-8 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8">
+                  {authorDetails.map((author) => (
+                    <li className="flex items-center space-x-2" key={author.name}>
+                      {author.avatar && (
+                        <Image
+                          src={author.avatar}
+                          width="38px"
+                          height="38px"
+                          alt="avatar"
+                          className="h-10 w-10 rounded-full"
+                        />
+                      )}
+                      <dl className="whitespace-nowrap text-sm font-medium leading-5">
+                        <dt className="sr-only">Name</dt>
+                        <dd className="text-gray-900 dark:text-gray-100">{author.name}</dd>
+                        <dt className="sr-only">Twitter</dt>
+                        <dd>
+                          {author.twitter && (
+                            <Link
+                              href={author.twitter}
+                              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                            >
+                              {author.twitter.replace('https://twitter.com/', '@')}
+                            </Link>
+                          )}
+                        </dd>
+                      </dl>
+                    </li>
+                  ))}
+                </ul>
+              </dd>
+            </dl> */}
           </div>
         </div>
       </article>
