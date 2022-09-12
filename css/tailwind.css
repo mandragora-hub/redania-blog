@@ -112,8 +112,24 @@ input:-webkit-autofill:focus {
   }
 }
 
-/* hsla(63,98%,96%,.50) */
+@layer utilities {
+  .prose :hover > .link-anchor {
+    @apply visible no-underline
+  }
+  
+  .prose .link-anchor:hover {
+    @apply visible;
+  } 
+  .prose .link-anchor {
+    @apply invisible absolute -ml-6 w-4/5 max-w-screen-md cursor-pointer pr-2 no-underline;
+  }
+  
+  .prose .link-anchor::after {
+    @apply text-neutral-700 content-["#"];
+  }
+}
 
+/* hsla(63,98%,96%,.50) */
 @layer base {
 
   a[target='_blank']:not(.icon-link)::after {

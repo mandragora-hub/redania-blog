@@ -45,10 +45,6 @@ export default function PostLayout({
 }: PostLayoutProps) {
   const { slug, fileName, date, title, images, tags, readingTime } = frontMatter
 
-  React.useEffect(() => {
-    console.log(toc)
-  })
-
   return (
     <SectionContainer>
       <BlogSEO

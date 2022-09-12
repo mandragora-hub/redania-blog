@@ -31,12 +31,12 @@ const PagescrollProgress = () => {
   )
 }
 
-const SubLevel = ({ depth, tocElement }) => {
-  if (!tocElement) return
-  if (tocElement.depth <= depth) return
+// const SubLevel = ({ depth, tocElement }) => {
+//   if (!tocElement) return
+//   if (tocElement.depth <= depth) return
 
-  return <div className="mt-1 ml-4 space-y-1"></div>
-}
+//   return <div className="mt-1 ml-4 space-y-1"></div>
+// }
 
 type TocLinkProps = {
   tocElement: TocHeading
@@ -52,7 +52,7 @@ const TocLink = ({ tocElement }: TocLinkProps) => {
           {value}
         </p>
       </a>
-      <SubLevel depth={depth} tocElement={array[index + 1]} />
+      {/* <SubLevel depth={depth} tocElement={array[index + 1]} /> */}
     </div>
   )
 }
