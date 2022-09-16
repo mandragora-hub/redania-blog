@@ -1,7 +1,7 @@
-import { visit, Node } from 'unist-util-visit'
+import { visit, Node, Parent } from 'unist-util-visit'
 import sizeOf from 'image-size'
 import fs from 'fs'
-import { Literal, Parent } from 'unist'
+import { Literal } from 'unist'
 
 type ImageNode = Parent & {
   url: string
@@ -74,9 +74,10 @@ export default function remarkImgToJsx() {
     visit(
       tree,
       // only visit p tags that contain an img element
-      (node: any) => node.type === 'paragraph' && node.children.some((n) => n.type === 'image'),
+      (node: any) =>
+        node.type === 'paragraph' && node.children.some((n: Node) => n.type === 'image'),
       (node: any) => {
-        const imageNode = node.children.find((n) => n.type === 'image') as ImageNode
+        const imageNode = node.children.find((n: Node) => n.type === 'image') as ImageNode
 
         // Change node type from p to div to avoid nesting error
         node.type = 'mdxJsxFlowElement'

@@ -110,7 +110,7 @@ export default function PostLayout({
                 <div className="prose max-w-none pt-10 pb-8 dark:prose-dark xl:col-span-3 xl:row-span-2">
                   {children}
                 </div>
-                <div className="hidden xl:block sticky top-4 xl:top-8">
+                <div className="sticky top-4 hidden xl:top-8 xl:block">
                   <TableOfContents toc={toc} />
                 </div>
               </div>
