@@ -6,7 +6,7 @@ export default function useScrollSpy() {
   const throttleMs = 100
 
   const actionSectionScrollSpy = throttle(() => {
-    const sections = document.getElementsByClassName('link-anchors')
+    const sections = document.getElementsByClassName('link-anchor')
 
     let prevBBox = null
     let currentSectionId = activeSection

@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .current-active-section p {
+    @apply font-medium text-neutral-800;
+  }
+
+  .current-active-section p::before {
+    @apply absolute text-rose-500 -left-1;
+    content: attr(data-before); 
+  }
+}
+
 @layer components {
   .pagescroll-progress-wrapper {
     @apply w-[2px] h-full -left-4 absolute;
