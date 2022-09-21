@@ -78,7 +78,7 @@ export async function getFileBySlug(type: string, slug: string | string[]): Prom
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
         rehypeSlug,
-        rehypeAutolinkHeadings,
+        [rehypeAutolinkHeadings, { properties: { className: 'link-anchor' } }],
         rehypeKatex,
         rehypeCodeTitles,
         [rehypeCitation, { path: path.join(root, 'data') }],
