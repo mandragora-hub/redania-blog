@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 @layer utilities {
+  .filename[data-title]::before {
+    content: attr(data-title);
+  }
+}
+
+@layer utilities {
   .current-active-section p {
     @apply font-medium text-neutral-800;
   }
@@ -148,7 +154,8 @@ input:-webkit-autofill:focus {
   }
 
   .prose pre code {
-    @apply text-neutral-800 bg-transparent;
+    @apply text-neutral-800 bg-transparent border-0 rounded-none p-0 font-normal;
+    @apply text-inherit;
   }
 
   .prose code {

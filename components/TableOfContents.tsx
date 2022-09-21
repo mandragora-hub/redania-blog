@@ -67,40 +67,15 @@ type TableOfContentsProps = {
 const TableOfContents = ({ toc, minLevel = 2 }: TableOfContentsProps) => {
   const activeSection = useScrollSpy()
 
-  React.useEffect(() => {
-    const tree = []
-    let lastTocElement: any = {}
-    let lastTocDepth = 0
-
-    for (var i = 0; i <= toc.length; i++) {
-      const tocElement = _.head(toc)
-      if (!tocElement) return // remove undefined
-
-      if (lastTocDepth <= tocElement.depth) {
-        lastTocDepth = tocElement?.depth || 0
-
-        lastTocElement = { children: [], ...tocElement }
-
-        tree.push(lastTocElement)
-      } else {
-        if (tocElement.depth > lastTocDepth) {
-          lastTocDepth = tocElement.depth
-          lastTocElement.children.push(tocElement)
-        }
-      }
-    }
-    console.log(toc[1])
-  }, [toc])
-
   return (
     <div className="mb-4 px-2 pl-10 text-sm tracking-tight text-gray-500 dark:text-gray-500">
       <p className="mb-4 text-xl font-bold">On this pages</p>
       <div className="mt-1 transform space-y-1 transition duration-500 ease-in-out">
         <PagescrollProgress />
-        {toc.map((tocElement, index, array) => (
+        {toc.map((tocElement) => (
           <TocLink
             key={tocElement.value}
-            activeSection={activeSection === tocElement.value.toLowerCase()}
+            activeSection={activeSection === tocElement.url.replace('#', '')}
             tocElement={tocElement}
           />
         ))}

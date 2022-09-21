@@ -11,7 +11,6 @@ import remarkGfm from 'remark-gfm'
 import remarkFootnotes from 'remark-footnotes'
 import remarkMath from 'remark-math'
 import remarkExtractFrontmatter from './remark-extract-frontmatter'
-import remarkCodeTitles from './remark-code-title'
 import remarkTocHeadings from './remark-toc-headings'
 import remarkImgToJsx from './remark-img-to-jsx'
 // Rehype packages
@@ -21,6 +20,7 @@ import rehypeKatex from 'rehype-katex'
 import rehypeCitation from 'rehype-citation'
 import rehypePrismPlus from 'rehype-prism-plus'
 import rehypePresetMinify from 'rehype-preset-minify'
+import rehypeCodeTitles from './rehype-code-title'
 import { TocHeading, FrontMatterType, PostType } from '@/common/types'
 
 const root = process.cwd()
@@ -71,7 +71,6 @@ export async function getFileBySlug(type: string, slug: string | string[]): Prom
         remarkExtractFrontmatter,
         [remarkTocHeadings, { exportRef: toc }],
         remarkGfm,
-        remarkCodeTitles,
         [remarkFootnotes, { inlineNotes: true }],
         remarkMath,
         remarkImgToJsx,
@@ -81,6 +80,7 @@ export async function getFileBySlug(type: string, slug: string | string[]): Prom
         rehypeSlug,
         rehypeAutolinkHeadings,
         rehypeKatex,
+        rehypeCodeTitles,
         [rehypeCitation, { path: path.join(root, 'data') }],
         [rehypePrismPlus, { ignoreMissing: true }],
         rehypePresetMinify,
