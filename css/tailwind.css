@@ -162,8 +162,6 @@ input:-webkit-autofill:focus {
     @apply rounded border border-neutral-300 bg-neutral-200 py-0.5 px-1 text-neutral-800;
   }
 
-
-
   a[target='_blank']:not(.icon-link)::after {
     content: '';
     @apply inline-block h-3 w-3 bg-contain;

@@ -1,13 +1,11 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, ClassAttributes, HTMLAttributes } from 'react'
 
-type PreProps = {
-  className?: string
-  title?: string
-  // showLineNumbers?: string | null
-  children: React.ReactNode
-}
+type preProps = ClassAttributes<HTMLPreElement> &
+  HTMLAttributes<HTMLPreElement> & {
+    title?: string
+  }
 
-const Pre = (pre: PreProps) => {
+const Pre = (pre: preProps) => {
   const textInput = useRef<HTMLDivElement>(null)
   const [hovered, setHovered] = useState(false)
   const [copied, setCopied] = useState(false)

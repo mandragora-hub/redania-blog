@@ -5,6 +5,7 @@ import Image from './Image'
 import CustomLink from './Link'
 import TOCInline from './TOCInline'
 import Pre from './Pre'
+import Table from './Table'
 import { BlogNewsletterForm } from './NewsletterForm'
 import { MDXComponents as MDXComponentsBasicProps } from 'mdx/types'
 import { TocHeading, AuthorFrontMatterTypes, FrontMatterType } from '@/common/types'
@@ -24,8 +25,8 @@ export const MDXComponents: MDXComponentsBasicProps = {
   TOCInline,
   // @ts-ignore
   a: CustomLink,
-  // @ts-ignore
   pre: Pre,
+  table: Table,
   BlogNewsletterForm: BlogNewsletterForm,
   wrapper: ({ components, layout, ...rest }: MDXComponentsWrapperProps) => {
     const Layout = require(`../layouts/${layout}`).default
