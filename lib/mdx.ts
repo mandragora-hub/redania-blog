@@ -13,6 +13,8 @@ import remarkMath from 'remark-math'
 import remarkExtractFrontmatter from './remark-extract-frontmatter'
 import remarkTocHeadings from './remark-toc-headings'
 import remarkImgToJsx from './remark-img-to-jsx'
+import remarkAdmonitions from './remark-admonitions'
+import remarkDirective from 'remark-directive'
 // Rehype packages
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
@@ -74,6 +76,8 @@ export async function getFileBySlug(type: string, slug: string | string[]): Prom
         [remarkFootnotes, { inlineNotes: true }],
         remarkMath,
         remarkImgToJsx,
+        remarkDirective,
+        remarkAdmonitions,
       ]
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),

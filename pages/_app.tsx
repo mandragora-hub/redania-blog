@@ -1,3 +1,5 @@
+import '@/css/fontawesome.css'
+import '@/css/admonition.css'
 import '@/css/tailwind.css'
 import '@/css/prism.css'
 import 'katex/dist/katex.css'
