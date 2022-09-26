@@ -6,6 +6,15 @@ export type TocHeading = {
   depth: number
 }
 
+export type TreeTocHeading = {
+  parent: number | null
+  index: number
+  value: string
+  url: string
+  depth: number
+  children: Array<TreeTocHeading>
+}
+
 export type PaginationType = {
   totalPages: number
   currentPage: number

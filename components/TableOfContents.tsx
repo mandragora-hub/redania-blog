@@ -2,7 +2,7 @@ import { TocHeading } from '@/common/types'
 import React from 'react'
 import useReadingProgress from '@/hooks/useReadingProgress'
 import useScrollSpy from '@/hooks/useScrollSpy'
-import _ from 'lodash'
+import TocToTree from '@/lib/utils/TocToTree'
 
 // Hide progress bar when progress pages is lower that lower bound
 const LOWER_BOUND = 5
@@ -68,28 +68,7 @@ const TableOfContents = ({ toc, minLevel = 2 }: TableOfContentsProps) => {
   const activeSection = useScrollSpy()
 
   React.useEffect(() => {
-    const tree = []
-    let lastTocElement: any = {}
-    let lastTocDepth = 0
-
-    for (var i = 0; i <= toc.length; i++) {
-      const tocElement = _.head(toc)
-      if (!tocElement) return // remove undefined
-
-      if (lastTocDepth <= tocElement.depth) {
-        lastTocDepth = tocElement?.depth || 0
-
-        lastTocElement = { children: [], ...tocElement }
-
-        tree.push(lastTocElement)
-      } else {
-        if (tocElement.depth > lastTocDepth) {
-          lastTocDepth = tocElement.depth
-          lastTocElement.children.push(tocElement)
-        }
-      }
-    }
-    console.log(toc[1])
+    console.log(TocToTree(toc))
   }, [toc])
 
   return (
