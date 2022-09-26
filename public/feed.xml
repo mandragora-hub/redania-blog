@@ -11,9 +11,9 @@
       <atom:link href="https://tailwind-nextjs-starter-blog.vercel.app/feed.xml" rel="self" type="application/rss+xml"/>
       
   <item>
-    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/markdown-chearsheet</guid>
+    <guid>https://tailwind-nextjs-starter-blog.vercel.app/blog/markdown-cheatsheet</guid>
     <title>Markdown Cheatsheet</title>
-    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/markdown-chearsheet</link>
+    <link>https://tailwind-nextjs-starter-blog.vercel.app/blog/markdown-cheatsheet</link>
     <description>Markdown cheatsheet for all your blogging needs - headers, lists, images, tables and more! An illustrated guide based on GitHub Flavored Markdown.</description>
     <pubDate>Tue, 06 Sep 2022 00:00:00 GMT</pubDate>
     <author>address@yoursite.com (Tails Azimuth)</author>
