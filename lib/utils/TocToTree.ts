@@ -47,7 +47,7 @@ function processElement(
   return processElement(tree, newTocElement, parent.parent)
 }
 
-export default function TocToTree(toc: TocHeading[]) {
+const TocToTree = (toc: TocHeading[]): TreeTocHeading[] => {
   let tree = new Array<TreeTocHeading>()
   let relativeIndexTocElement: number | null = null
 
@@ -56,10 +56,12 @@ export default function TocToTree(toc: TocHeading[]) {
   })
 
   for (const tocElement of superToc) {
-    if (!tocElement) return // remove undefined
+    if (!tocElement) return tree // remove undefined
 
     relativeIndexTocElement = processElement(tree, tocElement, relativeIndexTocElement)
   }
 
   return tree
 }
+
+export default TocToTree

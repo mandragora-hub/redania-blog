@@ -1,4 +1,4 @@
-import { TocHeading } from '@/common/types'
+import { TocHeading, TreeTocHeading } from '@/common/types'
 import React from 'react'
 import useReadingProgress from '@/hooks/useReadingProgress'
 import useScrollSpy from '@/hooks/useScrollSpy'
@@ -32,55 +32,67 @@ const PagescrollProgress = () => {
   )
 }
 
-// const SubLevel = ({ depth, tocElement }) => {
-//   if (!tocElement) return
-//   if (tocElement.depth <= depth) return
-
-//   return <div className="mt-1 ml-4 space-y-1"></div>
-// }
-
 type TocLinkProps = {
-  tocElement: TocHeading
-  activeSection?: boolean | null | undefined
+  tocElement: TreeTocHeading
+  currentSection?: string | null | undefined
+  maxDepth: number
 }
 
-const TocLink = ({ tocElement, activeSection = false }: TocLinkProps) => {
-  const { value, url, depth } = tocElement
+const TocLink = ({ tocElement, currentSection, maxDepth }: TocLinkProps) => {
+  const { value, url, depth, children } = tocElement
+
+  const [active, setActive] = React.useState<boolean>(false)
+
+  React.useEffect(() => {
+    setActive(
+      currentSection === url.replace('#', '') ||
+        children.find((child) => currentSection == child.url.replace('#', '')) !== undefined
+    )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentSection])
 
   return (
     <div className="transition-all duration-500 ease-in-out">
-      <a className={activeSection ? 'current-active-section' : ''} href={url}>
+      <a className={active ? 'current-active-section' : ''} href={url}>
         <p className="relative pl-2" data-before="❯">
           {value}
         </p>
       </a>
-      {/* <SubLevel depth={depth} tocElement={array[index + 1]} /> */}
+      {depth < maxDepth && (
+        <div className="mt-1 ml-4 space-y-1">
+          {children.map((node) => (
+            <TocLink
+              key={node.value}
+              currentSection={currentSection}
+              tocElement={node}
+              maxDepth={maxDepth}
+            />
+          ))}
+        </div>
+      )}
     </div>
   )
 }
 
 type TableOfContentsProps = {
   toc: TocHeading[]
-  minLevel?: number
+  maxDepth?: number
 }
 
-const TableOfContents = ({ toc, minLevel = 2 }: TableOfContentsProps) => {
-  const activeSection = useScrollSpy()
-
-  React.useEffect(() => {
-    console.log(TocToTree(toc))
-  }, [toc])
+const TableOfContents = ({ toc, maxDepth = 2 }: TableOfContentsProps) => {
+  const currentSection = useScrollSpy()
 
   return (
     <div className="mb-4 px-2 pl-10 text-sm tracking-tight text-gray-500 dark:text-gray-500">
       <p className="mb-4 text-xl font-bold">On this pages</p>
       <div className="mt-1 transform space-y-1 transition duration-500 ease-in-out">
         <PagescrollProgress />
-        {toc.map((tocElement) => (
+        {TocToTree(toc).map((node) => (
           <TocLink
-            key={tocElement.value}
-            activeSection={activeSection === tocElement.url.replace('#', '')}
-            tocElement={tocElement}
+            key={node.value}
+            maxDepth={maxDepth}
+            currentSection={currentSection}
+            tocElement={node}
           />
         ))}
       </div>
