@@ -49,7 +49,7 @@ module.exports = {
                 color: `${theme('colors.primary.600')} !important`,
                 textDecoration: 'underline',
               },
-              code: { color: theme('colors.primary.400') },
+              code: { color: theme('colors.neutral.900') },
             },
             h1: {
               fontWeight: '700',
@@ -80,12 +80,12 @@ module.exports = {
             //   paddingBottom: '2px',
             //   borderRadius: '0.25rem',
             // },
-            // 'code::before': {
-            //   content: 'none',
-            // },
-            // 'code::after': {
-            //   content: 'none',
-            // },
+            'code::before': {
+              content: 'none',
+            },
+            'code::after': {
+              content: 'none',
+            },
             details: {
               backgroundColor: theme('colors.gray.100'),
               paddingLeft: '4px',

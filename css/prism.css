@@ -5,22 +5,15 @@
  * https://github.com/PrismJS/prism-themes
  */
 
-/* Code title styles */
-.remark-code-title {
-  @apply rounded-t bg-gray-700 px-5 py-3 font-mono text-sm font-bold text-gray-200;
-}
-
-.remark-code-title + div > pre {
-  @apply mt-0 rounded-t-none;
-}
-
 /* Code block styles */
 .code-highlight {
   @apply float-left min-w-full;
 }
 
 .code-line {
-  @apply -mx-4 block border-l-4 border-transparent pl-4 pr-4;
+  @apply -mx-4 block border-l-4 border-zinc-50 pl-4 pr-4;
+
+  /* border-transparent */
 }
 
 .code-line.inserted {
@@ -32,7 +25,7 @@
 }
 
 .highlight-line {
-  @apply -mx-4 border-l-4 border-primary-500  bg-gray-700 bg-opacity-50;
+  @apply -mx-4 border-l-4 border-primary-500 bg-neutral-200 bg-opacity-50;
 }
 
 .line-number::before {
@@ -42,99 +35,143 @@
 
 /* Token styles */
 /**
- * MIT License
- * Copyright (c) 2018 Sarah Drasner
- * Sarah Drasner's[@sdras] Night Owl
- * Ported by Sara vieria [@SaraVieira]
- * Added by Souvik Mandal [@SimpleIndian]
+ * Coy without shadows
+ * Based on Tim Shedor's Coy theme for prism.js
+ * Author: RunDevelopment
  */
-.token.comment,
-.token.prolog,
-.token.cdata {
-  color: rgb(99, 119, 119);
-  font-style: italic;
-}
 
-.token.punctuation {
-  color: rgb(199, 146, 234);
-}
-
-.namespace {
-  color: rgb(178, 204, 214);
-}
-
-.token.deleted {
-  color: rgba(239, 83, 80, 0.56);
-  font-style: italic;
-}
-
-.token.symbol,
-.token.property {
-  color: rgb(128, 203, 196);
-}
-
-.token.tag,
-.token.operator,
-.token.keyword {
-  color: rgb(127, 219, 202);
-}
-
-.token.boolean {
-  color: rgb(255, 88, 116);
-}
-
-.token.number {
-  color: rgb(247, 140, 108);
-}
-
-.token.constant,
-.token.function,
-.token.builtin,
-.token.char {
-  color: rgb(130, 170, 255);
-}
-
-.token.selector,
-.token.doctype {
-  color: rgb(199, 146, 234);
-  font-style: italic;
-}
-
-.token.attr-name,
-.token.inserted {
-  color: rgb(173, 219, 103);
-  font-style: italic;
-}
-
-.token.string,
-.token.url,
-.token.entity,
-.language-css .token.string,
-.style .token.string {
-  color: rgb(173, 219, 103);
-}
-
-.token.class-name,
-.token.atrule,
-.token.attr-value {
-  color: rgb(255, 203, 139);
-}
-
-.token.regex,
-.token.important,
-.token.variable {
-  color: rgb(214, 222, 235);
-}
-
-.token.important,
-.token.bold {
-  font-weight: bold;
-}
-
-.token.italic {
-  font-style: italic;
-}
-
-.token.table {
-  display: inline;
-}
+ code[class*="language-"],
+ pre[class*="language-"] {
+   color: black;
+   background: none;
+   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+   font-size: 1em;
+   text-align: left;
+   white-space: pre;
+   word-spacing: normal;
+   word-break: normal;
+   word-wrap: normal;
+   line-height: 1.5;
+ 
+   -moz-tab-size: 4;
+   -o-tab-size: 4;
+   tab-size: 4;
+ 
+   -webkit-hyphens: none;
+   -moz-hyphens: none;
+   -ms-hyphens: none;
+   hyphens: none;
+ }
+ 
+ /* Code blocks */
+ pre[class*="language-"] {
+   position: relative;
+   border-left: 10px solid #358ccb;
+   box-shadow: -1px 0 0 0 #358ccb, 0 0 0 1px #dfdfdf;
+   background-color: #fdfdfd;
+   background-image: linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
+   background-size: 3em 3em;
+   background-origin: content-box;
+   background-attachment: local;
+   margin: .5em 0;
+   padding: 0 1em;
+ }
+ 
+ pre[class*="language-"] > code {
+   display: block;
+ }
+ 
+ /* Inline code */
+ :not(pre) > code[class*="language-"] {
+   position: relative;
+   padding: .2em;
+   border-radius: 0.3em;
+   color: #c92c2c;
+   border: 1px solid rgba(0, 0, 0, 0.1);
+   display: inline;
+   white-space: normal;
+   background-color: #fdfdfd;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+ }
+ 
+ .token.comment,
+ .token.block-comment,
+ .token.prolog,
+ .token.doctype,
+ .token.cdata {
+   color: #7D8B99;
+ }
+ 
+ .token.punctuation {
+   color: #5F6364;
+ }
+ 
+ .token.property,
+ .token.tag,
+ .token.boolean,
+ .token.number,
+ .token.function-name,
+ .token.constant,
+ .token.symbol,
+ .token.deleted {
+   color: #c92c2c;
+ }
+ 
+ .token.selector,
+ .token.attr-name,
+ .token.string,
+ .token.char,
+ .token.function,
+ .token.builtin,
+ .token.inserted {
+   color: #2f9c0a;
+ }
+ 
+ .token.operator,
+ .token.entity,
+ .token.url,
+ .token.variable {
+   color: #a67f59;
+   background: rgba(255, 255, 255, 0.5);
+ }
+ 
+ .token.atrule,
+ .token.attr-value,
+ .token.keyword,
+ .token.class-name {
+   color: #1990b8;
+ }
+ 
+ .token.regex,
+ .token.important {
+   color: #e90;
+ }
+ 
+ .language-css .token.string,
+ .style .token.string {
+   color: #a67f59;
+   background: rgba(255, 255, 255, 0.5);
+ }
+ 
+ .token.important {
+   font-weight: normal;
+ }
+ 
+ .token.bold {
+   font-weight: bold;
+ }
+ 
+ .token.italic {
+   font-style: italic;
+ }
+ 
+ .token.entity {
+   cursor: help;
+ }
+ 
+ .token.namespace {
+   opacity: .7;
+ }
+ 

@@ -12,7 +12,25 @@ Here’s an overview of Markdown syntax that you can use anywhere on GitHub.com 
 
 <TOCInline toc={props.toc} asDisclosure />
 
-## Headers
+# Admonitions
+
+Admonitions are colorful blocks to highlight something and bring to immediate attention. Inspired from [Docusaurus v2](https://docusaurus.io/docs/markdown-features/admonitions).
+
+## Usage:
+
+---
+
+`:::` followed by the type and closing with `:::`.
+
+:::warning
+
+something that tells you to be careful or tells you about something, usually something bad, before it happens
+
+:::
+
+---
+
+# Headers
 
 To create a heading, add number signs `(#)` in front of a word or phrase.
 The number of number signs you use should correspond to the heading level.
@@ -27,7 +45,7 @@ For example, to create a heading level three (`<h3>`), use three number signs (e
 | `##### Heading level 5`  | `<h5>Heading level 5</h5>` | <h5>Heading level 5</h5> |
 | `###### Heading level 6` | `<h6>Heading level 6</h6>` | <h6>Heading level 6</h6> |
 
-### Alternate Syntax:
+## Alternate Syntax:
 
 Alternatively, on the line below the text, add any number of == characters for heading level 1 or -- characters for heading level 2.
 
@@ -36,7 +54,7 @@ Alternatively, on the line below the text, add any number of == characters for h
 | Heading level 1<br/>===============    | `<h1>Heading level 1</h1>` | <h1>Heading level 1</h1> |
 | ## Heading level 2<br/>--------------- | `<h2>Heading level 2</h2>` | <h2>Heading level 2</h2> |
 
-## Emphasis
+# Emphasis
 
 | Markdown                                                              | HTML                                                                                            | Rendered                                                                                    |
 | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
@@ -45,11 +63,11 @@ Alternatively, on the line below the text, add any number of == characters for h
 | Combined emphasis with<br/>`**asterisks and <br/>__underscores__**`   | Combined emphasis with <strong>asterisks and underscores</strong>                               | Combined emphasis with <strong>asterisks and underscores</strong>                           |
 
 
-## Strikethrough
+# Strikethrough
 
 Any word wrapped with two tildes (like `~~this~~`) will appear ~~crossed out~~.
 
-## Lists
+# Lists
 
 | Markdown                                                                                                                            | Rendered                                                                                                                                             |
 | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -57,7 +75,7 @@ Any word wrapped with two tildes (like `~~this~~`) will appear ~~crossed out~~.
 | - First item<br/>- Second item<br/>- Third item<br/>- Fourth item                                                                   | <ul><li>First item</li><li>Second item</li><li>Third item</li><li>Fourth item</li></ul>                                                              |
 | - Unordered list can use asterisks<br/>\* Or minuses<br/>+ Or pluses                                                                | <ul><li>Unordered list can use asterisks</li><li>Or minuses</li><li>Third item</li><li>Or pluses </li></ul>                                          |
 
-## Links
+# Links
 
 To create a link, enclose the link text in brackets `[Wikipedia]` and then follow it immediately with the URL in parentheses `(https://wikipedia.com)`. `[Wikipedia](https://wikipedia.com)`
 
@@ -75,21 +93,21 @@ You can optionally add a title for a link. This will appear as a tooltip when th
 | `[You can use numbers for reference-style link definitions][1]`<br/><br/>`[1]: https://react.com` | [You can use numbers for reference-style link definitions](https://react.com) |
 | `Or leave it empty and use the [link text itself].`                                               | Or leave it empty and use the (link text itself).                             |
 
-## Images
+# Images
 
 Linking images is similar to creating links, by appending a `!` in front of the link. `![Kitty Cat](http://placekitten.com/1280/800)`
 
 ![Kitty Cat](http://placekitten.com/1280/800)
 
-## Code Blocks
+# Code Blocks
 
 Showcase samples of code with fenced code blocks and syntax highlighting. Additional support for Title, Line Numbers and Line Highlights using meta options.
 
-### Inline code
+## Inline code
 
-Inline code has `back-ticks around` it. Inline code can also be wrapped with `links`.
+Inline code has `back-ticks around` it. Inline code can also be wrapped with [`links`](/links).
 
-### Basic Code block
+## Basic Code block
 
 There are two ways to create code block:
 
@@ -132,11 +150,11 @@ To add syntax highlighting, specify a language next to the back-ticks before the
 ```
 ````
 
-### With title
+## With title
 
 To show the file name, include the meta `title="jsconfig.json"`
 
-````json:"jsconfig.json"
+````json title="jsconfig.json"
 ```json title="jsconfig.json"
 {
   "compilerOptions": {
@@ -153,37 +171,11 @@ To show the file name, include the meta `title="jsconfig.json"`
 ```
 ````
 
-Line numbers can be started at an arbitrary point as well using the meta `showLineNumbers=n`, where `n = digits`.
-
-````
-//```javascript title="rehype.js" showLineNumbers=65
-const calculateStartingLine = (meta) => {
-  const RE = /showLineNumbers=(?<lines>\d+)/i
-  // pick the line number after = using a named capturing group
-  if (RE.test(meta)) {
-    const {
-      groups: { lines },
-    } = RE.exec(meta)
-    return Number(lines)
-  }
-  return 0
-}
-//```
-````
-
-### Line highlighting
-
-Line highlighting can be done using the meta `{n}`.
-
-- `{2}` - This will highlight line #2.
-- `{2,4,6}` - This will highlight line #2, #4 and #6 only.
-- `{2-10}` - This will highlight line #2 through #10 (inclusive).
-
-### With title and line numbers:
+## With title and line numbers:
 
 To show line numbers, add the meta `showLineNumbers`.
 
-````
+````json title="jsconfig.json" showLineNumbers
 ```json title="jsconfig.json" showLineNumbers
 {
   "compilerOptions": {
@@ -200,7 +192,46 @@ To show line numbers, add the meta `showLineNumbers`.
 ```
 ````
 
-## Table
+
+Line numbers can be started at an arbitrary point as well using the meta `showLineNumbers=n`, where `n = digits`.
+
+````javascript title="rehype.js" showLineNumbers=65
+//```javascript title="rehype.js" showLineNumbers=65
+const calculateStartingLine = (meta) => {
+  const RE = /showLineNumbers=(?<lines>\d+)/i
+  // pick the line number after = using a named capturing group
+  if (RE.test(meta)) {
+    const {
+      groups: { lines },
+    } = RE.exec(meta)
+    return Number(lines)
+  }
+  return 0
+}
+//```
+````
+
+## Line highlighting
+
+Line highlighting can be done using the meta `{n}`.
+
+- `{2}` - This will highlight line #2.
+- `{2,4,6}` - This will highlight line #2, #4 and #6 only.
+- `{2-10}` - This will highlight line #2 through #10 (inclusive).
+
+
+
+````html title="sample.html" showLineNumbers {2,4,6}
+```html title="sample.html" showLineNumbers {2,4,6}
+<div>
+  <h1>Code blocks and line highlighting</h1>
+  <p>Use the meta property to enable features</p>
+  <p>Highlighted lines are syntax colored</p>
+</div>
+```
+````
+
+# Table
 
 Tables aren't part of the core Markdown spec, but they are part of GFM.
 
@@ -233,7 +264,7 @@ Colons can be used to align columns.
 
 There must be at least 3 dashes separating each header cell. The outer pipes (|) are optional, and you don't need to make the raw Markdown line up prettily. You can also use inline Markdown.
 
-## Blockquotes
+# Blockquotes
 
 Blockquotes are very handy to showcase a phrase or a text said by another person. To start a blockquote, simply prefix with `>`. To have multiple blockquotes in the same container, keep adding a `>` on each line.
 
@@ -242,7 +273,7 @@ Blockquotes are very handy to showcase a phrase or a text said by another person
 
 > This is a very long line that will still be quoted properly when it wraps. Oh, boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can put **Markdown** into a blockquote.
 
-## Collapsible Section
+# Collapsible Section
 
 An accordion like element which can wrap more Markdown format content.
 
@@ -256,7 +287,7 @@ An accordion like element which can wrap more Markdown format content.
 ```
 ````
 
-## Horizontal Rule
+# Horizontal Rule
 
 Three or more Hyphens `---`, Asterisks `***`, or Underscores `___` will render a `<hr>`.
 
@@ -266,7 +297,7 @@ ___
 
 ===
 
-## Footnotes
+# Footnotes
 
 Footnotes allow to add notes and references at the end of the document, like Wikipedia. 
 When you create a footnote, a superscript number with a link appears where you added the footnote reference. 
@@ -275,7 +306,7 @@ Clicking on the link to jumps to the content of the footnote at the bottom of th
 - First Footnote[^1]
 - Second Footnote[^2]
 - Third Footnote[^3]
-- Random strings as the identifier[^@#$%]
+- Random strings as the identifier`[^@#$%]`
 - Footnotes with some URL in it[^5]
 
 
@@ -283,3 +314,4 @@ Clicking on the link to jumps to the content of the footnote at the bottom of th
 [^2]: Second Footnote
 [^3]: Third Footnote // This doesn't get rendered.
 [^@#$%]: A footnote on the label: "@#$%"
+[^5]: Cover Photo by Yancy Min on Unsplash

@@ -1,13 +1,11 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, ClassAttributes, HTMLAttributes } from 'react'
 
-type PreProps = {
-  children: React.ReactNode
-}
+type preProps = ClassAttributes<HTMLPreElement> &
+  HTMLAttributes<HTMLPreElement> & {
+    title?: string
+  }
 
-const Pre = (props: PreProps) => {
-
-  React.useEffect(() => {console.log(props.children)}, [props.children])
-
+const Pre = (pre: preProps) => {
   const textInput = useRef<HTMLDivElement>(null)
   const [hovered, setHovered] = useState(false)
   const [copied, setCopied] = useState(false)
@@ -38,6 +36,22 @@ const Pre = (props: PreProps) => {
         onMouseLeave={onExit}
         className="relative my-4 w-full flex-col rounded border border-gray-300 shadow dark:border-gray-700"
       >
+        {pre.title && (
+          <div className="relative flex w-full items-center justify-start rounded-t border-b-2 border-gray-300 bg-gray-50 p-1 dark:border-gray-800 dark:bg-gray-900">
+            <div className="flex items-center justify-center p-1">
+              <div className=" m-1 h-3 w-3 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+              <div className=" m-1 h-3 w-3 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+              <div className=" m-1 h-3 w-3 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+            </div>
+            <div className="absolute left-0 flex w-full items-center justify-center">
+              <span
+                className="filename font-sans text-sm font-bold text-gray-500 dark:text-gray-400"
+                data-title={pre.title}
+              ></span>
+            </div>
+          </div>
+        )}
+
         {hovered && (
           <button
             aria-label="Copy code"
@@ -79,7 +93,7 @@ const Pre = (props: PreProps) => {
           </button>
         )}
 
-        <pre>{props.children}</pre>
+        <pre>{pre.children}</pre>
       </div>
     </div>
   )

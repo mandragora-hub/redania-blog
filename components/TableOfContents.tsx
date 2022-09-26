@@ -76,10 +76,10 @@ const TableOfContents = ({ toc, minLevel = 2 }: TableOfContentsProps) => {
       <p className="mb-4 text-xl font-bold">On this pages</p>
       <div className="mt-1 transform space-y-1 transition duration-500 ease-in-out">
         <PagescrollProgress />
-        {toc.map((tocElement, index, array) => (
+        {toc.map((tocElement) => (
           <TocLink
             key={tocElement.value}
-            activeSection={activeSection === tocElement.value.toLowerCase()}
+            activeSection={activeSection === tocElement.url.replace('#', '')}
             tocElement={tocElement}
           />
         ))}

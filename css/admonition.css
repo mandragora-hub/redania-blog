@@ -1,0 +1,82 @@
+@tailwind components;
+
+@layer components {
+  .admonition {
+    @apply my-8 mx-12 p-4 rounded-lg border-l-2 shadow-md;
+  }
+
+  .admonition-content {
+    @apply flex flex-col justify-center pl-4 leading-relaxed;
+  }
+  
+  .admonition-content > :last-child {
+    @apply mb-0;
+  }
+
+  .admonition h5 {
+    @apply mt-0 mb-2 uppercase;
+  }
+
+  .admonition-icon {
+    @apply mr-1 inline-block align-middle;
+  }
+
+  .admonition-icon svg {
+    @apply mb-1 inline-block h-5 w-5 stroke-0;
+  }
+
+
+  /* default for custom types */
+  .admonition {
+    @apply border-purple-600 bg-purple-100;
+  }
+
+  .admonition h5 {
+    @apply text-purple-600;
+  }
+
+  /** native types */
+  .admonition-caution {
+    @apply border-orange-600 bg-orange-100;
+  }
+
+  .admonition-caution h5 {
+    @apply text-orange-600;
+  }
+
+  .admonition-tip {
+    @apply border-green-600 bg-green-100;
+  }
+
+  .admonition-tip h5 {
+    @apply text-green-600;
+  }
+
+  .admonition-warning {
+    @apply border-red-600 bg-red-100;
+  }
+
+  .admonition-warning h5 {
+    @apply text-red-600;
+  }
+
+  .admonition-important {
+    @apply border-blue-500 bg-blue-100;
+  }
+
+  .admonition-important h5 {
+    @apply text-blue-600;
+  }
+
+  .admonition-note {
+    @apply border-yellow-500 bg-yellow-100;
+  }
+
+  .admonition-note h5 {
+    @apply text-yellow-500;
+  }
+
+  .admonition .admonition-icon svg {
+    @apply fill-current stroke-current;
+  }
+}
