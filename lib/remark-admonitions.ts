@@ -1,19 +1,29 @@
-/** @typedef {import('remark-directive')} */
-
 import { visit } from 'unist-util-visit'
 import { h } from 'hastscript'
 
-const acceptableCalloutTypes = {
-  note: { cssClass: '', iconClass: 'comment-alt-lines' },
-  tip: { cssClass: 'admonition-success', iconClass: 'lightbulb' },
-  info: { cssClass: 'admonition-info', iconClass: 'info-circle' },
-  warning: { cssClass: 'admonition-warning', iconClass: 'file-contract' },
-  danger: { cssClass: 'admonition-danger', iconClass: 'siren-on' },
+import svghast, { SvgIconType } from './utils/svghast'
+
+type AcceptableCallout = {
+  [key: string]: {
+    cssClass: string
+    iconClass: SvgIconType
+  }
 }
 
-/** @type {import('unified').Plugin<[], import('mdast').Root>} */
+const acceptableCalloutTypes: AcceptableCallout = {
+  note: { cssClass: '', iconClass: 'note' },
+  tip: { cssClass: 'admonition-tip', iconClass: 'tip' },
+  important: { cssClass: 'admonition-important', iconClass: 'important' },
+  docs: { cssClass: 'admonition-docs', iconClass: 'docs' },
+  warning: { cssClass: 'admonition-warning', iconClass: 'warning' },
+  caution: { cssClass: 'admonition-caution', iconClass: 'caution' },
+  quote: { cssClass: 'admonition-quote', iconClass: 'quote' },
+  comment: { cssClass: 'admonition-comment', iconClass: 'comment' },
+  question: { cssClass: 'admonition-question', iconClass: 'question' },
+}
+
 export default function remarkAdmonitions() {
-  return (tree) => {
+  return (tree: any) => {
     visit(tree, (node) => {
       if (
         node.type === 'textDirective' ||
@@ -24,7 +34,7 @@ export default function remarkAdmonitions() {
           return
         }
 
-        const boxInfo = acceptableCalloutTypes[node.name]
+        const boxInfo = acceptableCalloutTypes[node.name as keyof typeof acceptableCalloutTypes]
 
         // Adding CSS classes according to the type.
         const data = node.data || (node.data = {})
@@ -33,12 +43,13 @@ export default function remarkAdmonitions() {
         data.hProperties = h(tagName, { class: `admonition ${boxInfo.cssClass}` }).properties
 
         // Creating the icon.
-        const icon = h('i')
+        const icon = h('span')
         const iconData = icon.data || (icon.data = {})
-        iconData.hName = 'i'
-        iconData.hProperties = h('i', {
-          class: `far fa-${boxInfo.iconClass} md-callout-icon`,
+        iconData.hName = 'span'
+        iconData.hProperties = h('span', {
+          class: `admonition-icon`,
         }).properties
+        icon.children = [svghast(boxInfo.iconClass)]
 
         // Creating the icon's column.
         const iconWrapper = h('div')
