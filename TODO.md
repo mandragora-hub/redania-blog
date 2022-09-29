@@ -1,0 +1,3 @@
+- [x] convert the header link like social-icon. That mean that we will erase the heroicon package and instead we download the svg
+- [] first letter in tag should be capital letter and replace hyphen with space.
+- [] add shell-prompt-and-output-lines section like -> https://dhanrajsp.me/blog/markdown-101#shell-prompt-and-output-lines

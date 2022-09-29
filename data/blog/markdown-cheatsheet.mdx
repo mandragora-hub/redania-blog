@@ -1,0 +1,397 @@
+---
+title: 'Markdown Cheatsheet'
+date: '2022-09-06'
+tags: ['github', 'guide', markdown]
+draft: false
+summary: 'Markdown cheatsheet for all your blogging needs - headers, lists, images, tables and more! An illustrated guide based on GitHub Flavored Markdown.'
+---
+
+# Markdown test page
+
+Here’s an overview of Markdown syntax that you can use anywhere on GitHub.com or in your own text files.
+
+<TOCInline toc={props.toc} asDisclosure />
+
+# Admonitions
+
+Admonitions are colorful blocks to highlight something and bring to immediate attention. Inspired from [Docusaurus v2](https://docusaurus.io/docs/markdown-features/admonitions).
+
+## Usage:
+
+---
+
+`:::` followed by the type and closing with `:::`.
+
+:::warning
+
+`warning`
+
+something that tells you to be careful or tells you about something, usually something bad, before it happens
+
+:::
+
+:::note
+
+`note`
+
+a brief record of something written down to assist the memory or for future reference; a record or outline of a speech, statement, testimony, etc.
+
+:::
+
+:::question
+
+`question`
+
+a sentence in an interrogative form, addressed to someone in order to get information in reply.
+
+:::
+
+:::quote
+
+`quote`
+
+to repeat (a passage, phrase, etc.) from a book, speech, or the like, as by way of authority, illustration, etc.
+
+:::
+
+:::comment
+
+`comment`
+
+a criticism or interpretation, often by implication or suggestion; to write explanatory or critical notes upon a text.
+
+:::
+
+:::tip
+
+`tip`
+
+a small piece of useful advice about something practical
+
+:::
+
+:::important
+
+`important`
+
+having great value or influence; very necessary; (used about a person) having great influence or authority
+
+:::
+
+:::caution
+
+`caution`
+
+great care, because of possible danger; to warn somebody not to do something
+
+:::
+
+:::docs
+
+`docs`
+
+Manuals, listings, diagrams, and other hard- or soft-copy written and graphic materials that describe the use, operation, maintenance, or design of software or hardware:
+
+:::
+
+:::docs
+
+## Admonitions also supports markdown content:
+
+React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.
+
+```js
+const Button = (props) => <button {...props} />
+```
+
+:::
+
+---
+
+# Headers
+
+To create a heading, add number signs `(#)` in front of a word or phrase.
+The number of number signs you use should correspond to the heading level.
+For example, to create a heading level three (`<h3>`), use three number signs (e.g., ### My Header).
+
+| Markdown                 | HTML                       | Rendered                 |
+| ------------------------ | -------------------------- | ------------------------ |
+| `# Heading level 1`      | `<h1>Heading level 1</h1>` | <h1>Heading level 1</h1> |
+| `## Heading level 2`     | `<h2>Heading level 2</h2>` | <h2>Heading level 2</h2> |
+| `### Heading level 3`    | `<h3>Heading level 3</h3>` | <h3>Heading level 3</h3> |
+| `#### Heading level 4`   | `<h4>Heading level 4</h4>` | <h4>Heading level 4</h4> |
+| `##### Heading level 5`  | `<h5>Heading level 5</h5>` | <h5>Heading level 5</h5> |
+| `###### Heading level 6` | `<h6>Heading level 6</h6>` | <h6>Heading level 6</h6> |
+
+## Alternate Syntax:
+
+Alternatively, on the line below the text, add any number of == characters for heading level 1 or -- characters for heading level 2.
+
+| Markdown                               | HTML                       | Rendered                 |
+| -------------------------------------- | -------------------------- | ------------------------ |
+| Heading level 1<br/>===============    | `<h1>Heading level 1</h1>` | <h1>Heading level 1</h1> |
+| ## Heading level 2<br/>--------------- | `<h2>Heading level 2</h2>` | <h2>Heading level 2</h2> |
+
+---
+
+# Emphasis
+
+| Markdown                                                              | HTML                                                                                            | Rendered                                                                                    |
+| --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| Emphasis, aka italics, with<br/>`*asterisks*` or<br/>`_underscores_`  | Emphasis, aka italics, with<br/>`<em>asterisks</em>` or<br/>`<em>underscores</em>`              | Emphasis, aka italics, with<br/><em>asterisks</em> or<br/><em>underscores</em>              |
+| Emphasis, aka bold, with<br/>`**asterisks**` or<br/>`__underscores__` | Emphasis, aka bold, with<br/>`<strong>asterisks</strong>` or<br/>`<strong>underscores</strong>` | Emphasis, aka bold, with<br/><strong>asterisks</strong> or<br/><strong>underscores</strong> |
+| Combined emphasis with<br/>`**asterisks and <br/>__underscores__**`   | Combined emphasis with <strong>asterisks and underscores</strong>                               | Combined emphasis with <strong>asterisks and underscores</strong>                           |
+
+
+# Strikethrough
+
+Any word wrapped with two tildes (like `~~this~~`) will appear ~~crossed out~~.
+
+# Lists
+
+| Markdown                                                                                                                            | Rendered                                                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1. First ordered list item<br/>2. Another item<br/>1. Actual numbers don't matter, just that it's a number<br/>3. And another item. | <ol><li>First ordered list item</li><li>Another item</li><li>Actual numbers don't matter, just that it's a number</li><li>And another item</li></ol> |
+| - First item<br/>- Second item<br/>- Third item<br/>- Fourth item                                                                   | <ul><li>First item</li><li>Second item</li><li>Third item</li><li>Fourth item</li></ul>                                                              |
+| - Unordered list can use asterisks<br/>\* Or minuses<br/>+ Or pluses                                                                | <ul><li>Unordered list can use asterisks</li><li>Or minuses</li><li>Third item</li><li>Or pluses </li></ul>                                          |
+
+# Links
+
+To create a link, enclose the link text in brackets `[Wikipedia]` and then follow it immediately with the URL in parentheses `(https://wikipedia.com)`. `[Wikipedia](https://wikipedia.com)`
+
+[Wikipedia](https://wikipedia.com)
+
+You can optionally add a title for a link. This will appear as a tooltip when the user hovers over the link. To add a title, enclose it in parentheses after the URL. `[Wikipedia](https://wikipedia.com "a free online encyclopedia")`
+
+[Wikipedia](https://wikipedia.com 'a free online encyclopedia')
+
+| Markdown                                                                                          | Rendered                                                                      |
+| ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `[I'm an inline-style link](https://dhanrajsp.me)`                                                | [I'm an inline-style link](https://dhanrajsp.me)                              |
+| `[I'm an inline-style link](https://dhanrajsp.me "An Idiosyncratic Blog")`                        | [I'm an inline-style link](https://dhanrajsp.me 'An Idiosyncratic Blog')      |
+| `[I'm a reference-style link][reference]`<br/><br/> `[reference]: https://www.mozilla.org`        | [I'm a reference-style link](https://www.mozilla.org)                         |
+| `[You can use numbers for reference-style link definitions][1]`<br/><br/>`[1]: https://react.com` | [You can use numbers for reference-style link definitions](https://react.com) |
+| `Or leave it empty and use the [link text itself].`                                               | Or leave it empty and use the (link text itself).                             |
+
+# Images
+
+Linking images is similar to creating links, by appending a `!` in front of the link. `![Kitty Cat](http://placekitten.com/1280/800)`
+
+![Kitty Cat](http://placekitten.com/1280/800)
+
+# Code Blocks
+
+Showcase samples of code with fenced code blocks and syntax highlighting. Additional support for Title, Line Numbers and Line Highlights using meta options.
+
+## Inline code
+
+Inline code has `back-ticks around` it. Inline code can also be wrapped with [`links`](/links).
+
+## Basic Code block
+
+There are two ways to create code block:
+
+- Blocks of code are either fenced by lines with three back-ticks (```),
+- or are indented with four spaces.
+
+````
+```
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/data/*": ["data/*"],
+      "@/layouts/*": ["layouts/*"],
+      "@/lib/*": ["lib/*"],
+      "@/css/*": ["css/*"]
+    }
+  }
+}
+```
+````
+
+To add syntax highlighting, specify a language next to the back-ticks before the fenced code block.
+
+````json
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/data/*": ["data/*"],
+      "@/layouts/*": ["layouts/*"],
+      "@/lib/*": ["lib/*"],
+      "@/css/*": ["css/*"]
+    }
+  }
+}
+```
+````
+
+## With title
+
+To show the file name, include the meta `title="jsconfig.json"`
+
+````json title="jsconfig.json"
+```json title="jsconfig.json"
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/data/*": ["data/*"],
+      "@/layouts/*": ["layouts/*"],
+      "@/lib/*": ["lib/*"],
+      "@/css/*": ["css/*"]
+    }
+  }
+}
+```
+````
+
+## With title and line numbers:
+
+To show line numbers, add the meta `showLineNumbers`.
+
+````json title="jsconfig.json" showLineNumbers
+```json title="jsconfig.json" showLineNumbers
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/data/*": ["data/*"],
+      "@/layouts/*": ["layouts/*"],
+      "@/lib/*": ["lib/*"],
+      "@/css/*": ["css/*"]
+    }
+  }
+}
+```
+````
+
+
+Line numbers can be started at an arbitrary point as well using the meta `showLineNumbers=n`, where `n = digits`.
+
+````javascript title="rehype.js" showLineNumbers=65
+//```javascript title="rehype.js" showLineNumbers=65
+const calculateStartingLine = (meta) => {
+  const RE = /showLineNumbers=(?<lines>\d+)/i
+  // pick the line number after = using a named capturing group
+  if (RE.test(meta)) {
+    const {
+      groups: { lines },
+    } = RE.exec(meta)
+    return Number(lines)
+  }
+  return 0
+}
+//```
+````
+
+## Line highlighting
+
+Line highlighting can be done using the meta `{n}`.
+
+- `{2}` - This will highlight line #2.
+- `{2,4,6}` - This will highlight line #2, #4 and #6 only.
+- `{2-10}` - This will highlight line #2 through #10 (inclusive).
+
+
+
+````html title="sample.html" showLineNumbers {2,4,6}
+```html title="sample.html" showLineNumbers {2,4,6}
+<div>
+  <h1>Code blocks and line highlighting</h1>
+  <p>Use the meta property to enable features</p>
+  <p>Highlighted lines are syntax colored</p>
+</div>
+```
+````
+
+# Table
+
+Tables aren't part of the core Markdown spec, but they are part of GFM.
+
+```
+Colons can be used to align columns.
+
+| Tables        |      Are      |  Cool |
+| ------------- | :-----------: | ----: |
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      |   centered    |   $12 |
+| zebra stripes |   are neat    |    $1 |
+
+There must be at least 3 dashes separating each header cell.
+The outer pipes (|) are optional, and you don't need to make the
+raw Markdown line up prettily. You can also use inline Markdown.
+
+| Markdown | Less      | Pretty     |
+| -------- | --------- | ---------- |
+| _Still_  | `renders` | **nicely** |
+| 1        | 2         | 3          |
+```
+
+Colons can be used to align columns.
+
+| Tables        |      Are      |  Cool |
+| ------------- | :-----------: | ----: |
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      |   centered    |   $12 |
+| zebra stripes |   are neat    |    $1 |
+
+There must be at least 3 dashes separating each header cell. The outer pipes (|) are optional, and you don't need to make the raw Markdown line up prettily. You can also use inline Markdown.
+
+# Blockquotes
+
+Blockquotes are very handy to showcase a phrase or a text said by another person. To start a blockquote, simply prefix with `>`. To have multiple blockquotes in the same container, keep adding a `>` on each line.
+
+> Blockquotes are very handy to showcase a phrase or a text said by another person.
+> This line is part of the same quote.
+
+> This is a very long line that will still be quoted properly when it wraps. Oh, boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can put **Markdown** into a blockquote.
+
+# Collapsible Section
+
+An accordion like element which can wrap more Markdown format content.
+
+````
+```
+<Details>
+  Title for the container
+
+  More Content
+</Details>
+```
+````
+
+# Horizontal Rule
+
+Three or more Hyphens `---`, Asterisks `***`, or Underscores `___` will render a `<hr>`.
+
+---
+***
+___
+
+===
+
+# Footnotes
+
+Footnotes allow to add notes and references at the end of the document, like Wikipedia. 
+When you create a footnote, a superscript number with a link appears where you added the footnote reference. 
+Clicking on the link to jumps to the content of the footnote at the bottom of the page. To create a footnote reference, add a caret and an identifier inside brackets `The Big Bang Theory[^1]`
+
+- First Footnote[^1]
+- Second Footnote[^2]
+- Third Footnote[^3]
+- Random strings as the identifier`[^@#$%]`
+- Footnotes with some URL in it[^5]
+
+
+[^1]: First Footnote
+[^2]: Second Footnote
+[^3]: Third Footnote // This doesn't get rendered.
+[^@#$%]: A footnote on the label: "@#$%"
+[^5]: Cover Photo by Yancy Min on Unsplash

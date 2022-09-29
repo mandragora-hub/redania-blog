@@ -1,3 +1,4 @@
+/** @type {import('tailwindcss').Config} */
 const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
@@ -6,10 +7,10 @@ module.exports = {
     optimizeUniversalDefaults: true,
   },
   content: [
-    './pages/**/*.js',
-    './components/**/*.js',
-    './layouts/**/*.js',
-    './lib/**/*.js',
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './layouts/**/*.{ts,tsx}',
+    './lib/**/*.{ts,tsx}',
     './data/**/*.mdx',
   ],
   darkMode: 'class',
@@ -17,6 +18,7 @@ module.exports = {
     extend: {
       spacing: {
         '9/16': '56.25%',
+        header: '1.25rem 0',
       },
       lineHeight: {
         11: '2.75rem',
@@ -25,11 +27,17 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['InterVariable', ...defaultTheme.fontFamily.sans],
+        sans: ['Red Hat Mono', ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        primary: colors.teal,
+        primary: colors.blue,
+        secondary: colors.stone,
         gray: colors.neutral,
+        day: colors.yellow[50],
+        night: colors.gray[900],
+      },
+      backgroundColor: {
+        accent: colors.stone[900],
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -37,40 +45,46 @@ module.exports = {
             color: theme('colors.gray.700'),
             a: {
               color: theme('colors.primary.500'),
+              textDecoration: 'none',
               '&:hover': {
                 color: `${theme('colors.primary.600')} !important`,
+                textDecoration: 'underline',
               },
-              code: { color: theme('colors.primary.400') },
+              code: { color: theme('colors.neutral.900') },
             },
             h1: {
               fontWeight: '700',
               letterSpacing: theme('letterSpacing.tight'),
               color: theme('colors.gray.900'),
+              margin: theme('spacing.header'),
             },
             h2: {
               fontWeight: '700',
               letterSpacing: theme('letterSpacing.tight'),
               color: theme('colors.gray.900'),
+              margin: theme('spacing.header'),
             },
             h3: {
               fontWeight: '600',
               color: theme('colors.gray.900'),
+              margin: theme('spacing.header'),
             },
             'h4,h5,h6': {
               color: theme('colors.gray.900'),
+              margin: theme('spacing.header'),
             },
-            pre: {
-              backgroundColor: theme('colors.gray.800'),
-            },
-            code: {
-              color: theme('colors.pink.500'),
-              backgroundColor: theme('colors.gray.100'),
-              paddingLeft: '4px',
-              paddingRight: '4px',
-              paddingTop: '2px',
-              paddingBottom: '2px',
-              borderRadius: '0.25rem',
-            },
+            // pre: {
+            //   backgroundColor: theme('colors.gray.800'),
+            // },
+            // code: {
+            //   color: theme('colors.pink.500'),
+            //   backgroundColor: theme('colors.gray.100'),
+            //   paddingLeft: '4px',
+            //   paddingRight: '4px',
+            //   paddingTop: '2px',
+            //   paddingBottom: '2px',
+            //   borderRadius: '0.25rem',
+            // },
             'code::before': {
               content: 'none',
             },
@@ -85,7 +99,10 @@ module.exports = {
               paddingBottom: '2px',
               borderRadius: '0.25rem',
             },
-            hr: { borderColor: theme('colors.gray.200') },
+            hr: {
+              borderColor: theme('colors.neutral.400'),
+              margin: theme('spacing.header'),
+            },
             'ol li::marker': {
               fontWeight: '600',
               color: theme('colors.gray.500'),
@@ -127,12 +144,12 @@ module.exports = {
             'h4,h5,h6': {
               color: theme('colors.gray.100'),
             },
-            pre: {
-              backgroundColor: theme('colors.gray.800'),
-            },
-            code: {
-              backgroundColor: theme('colors.gray.800'),
-            },
+            // pre: {
+            //   backgroundColor: theme('colors.gray.800'),
+            // },
+            // code: {
+            //   backgroundColor: theme('colors.gray.800'),
+            // },
             details: {
               backgroundColor: theme('colors.gray.800'),
             },

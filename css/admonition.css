@@ -1,0 +1,154 @@
+@tailwind components;
+
+@layer components {
+  .admonition {
+    @apply my-8 mx-12 p-8 rounded-lg border-l-2 shadow-md relative;
+    
+    /* color schema var  */
+    --note: theme('colors.stone.400');
+    --note-bg: theme('colors.stone.100');
+    --question: theme('colors.sky.400');
+    --question-bg: theme('colors.sky.100');
+    --comment: theme('colors.indigo.400');
+    --comment-bg: theme('colors.indigo.100');
+    --quote: theme('colors.emerald.400');
+    --quote-bg: theme('colors.emerald.100');
+    --important: theme('colors.blue.400');
+    --important-bg: theme('colors.blue.100');
+    --tip: theme('colors.green.400');
+    --tip-bg: theme('colors.green.100');
+    --docs: theme('colors.purple.400');
+    --docs-bg: theme('colors.purple.100');
+    --warning: theme('colors.orange.400');
+    --warning-bg: theme('colors.orange.100');
+    --caution: theme('colors.red.400');
+    --caution-bg: theme('colors.red.100');
+  }
+
+  /* .admonition-heading {
+    @apply pl-4
+  } */
+
+  .admonition-content {
+    @apply flex flex-col justify-center leading-relaxed;
+  }
+  
+  .admonition-content > p {
+    @apply my-1;
+  }
+
+  .admonition-icon {
+    @apply rounded-full h-11 w-11 bg-day mr-0.5 inline-flex flex-col justify-center items-center absolute -left-3.5 -top-3 cursor-pointer;
+  }
+
+  .admonition-icon svg {
+    @apply inline-block h-6 w-6 stroke-0;
+  }
+
+  /* default for custom types */
+  .admonition {
+    background-color: var(--note-bg);
+    border-left-color: var(--note);
+  }
+
+  .admonition .admonition-icon svg {
+    fill: var(--note);
+    stroke: var(--note);
+  }
+
+  /** native types */
+  .admonition-tip {
+    background-color: var(--tip-bg);
+    border-left-color: var(--tip);
+  }
+
+  .admonition-tip .admonition-icon svg {
+    fill: var(--tip);
+    stroke: var(--tip);
+  }
+
+  .admonition-important {
+    background-color: var(--important-bg);
+    border-left-color: var(--important);
+  }
+
+  .admonition-important .admonition-icon svg {
+    fill: var(--important);
+    stroke: var(--important);
+  }
+
+  .admonition-quote {
+    background-color: var(--quote-bg);
+    border-left-color: var(--quote);
+  }
+
+  .admonition-quote .admonition-icon svg {
+    fill: var(--quote);
+    stroke: var(--quote);
+  }
+
+  .admonition-question {
+    background-color: var(--question-bg);
+    border-left-color: var(--question);
+  }
+
+  .admonition-question .admonition-icon svg {
+    fill: var(--question);
+    stroke: var(--question);
+  }
+
+  .admonition-important {
+    background-color: var(--important-bg);
+    border-left-color: var(--important);
+  }
+
+  .admonition-important .admonition-icon svg {
+    fill: var(--important);
+    stroke: var(--important);
+  }
+
+  .admonition-warning {
+    background-color: var(--warning-bg);
+    border-left-color: var(--warning);
+  }
+  
+  .admonition-warning .admonition-icon svg {
+    fill: var(--warning);
+    stroke: var(--warning);
+  }
+
+  .admonition-caution {
+    background-color: var(--caution-bg);
+    border-left-color: var(--caution);
+  }
+  
+  .admonition-caution .admonition-icon svg {
+    fill: var(--caution);
+    stroke: var(--caution);
+  }
+
+  .admonition-comment {
+    background-color: var(--comment-bg);
+    border-left-color: var(--comment);
+  }
+  
+  .admonition-comment .admonition-icon svg {
+    fill: var(--comment);
+    stroke: var(--comment);
+  }
+
+  .admonition-docs {
+    background-color: var(--docs-bg);
+    border-left-color: var(--docs);
+  }
+  
+  .admonition-docs .admonition-icon svg {
+    fill: var(--docs);
+    stroke: var(--docs);
+  }
+
+  .admonition-important {
+    @apply border-blue-500 bg-blue-100;
+  }
+
+}
