@@ -12,7 +12,6 @@
  *
  * @param {{
  *  toc: TocHeading[],
- *  indentDepth?: number,
  *  fromHeading?: number,
  *  toHeading?: number,
  *  asDisclosure?: boolean,
@@ -29,7 +28,6 @@ type TocHeading = {
 
 type TOCInlineProps = {
   toc: TocHeading[]
-  indentDepth?: number
   fromHeading?: number
   toHeading?: number
   asDisclosure?: boolean
@@ -38,9 +36,8 @@ type TOCInlineProps = {
 
 const TOCInline = ({
   toc,
-  indentDepth = 3,
   fromHeading = 1,
-  toHeading = 6,
+  toHeading = 2,
   asDisclosure = false,
   exclude = '',
 }: TOCInlineProps) => {
@@ -56,8 +53,18 @@ const TOCInline = ({
   const tocList = (
     <ul>
       {filteredToc.map((heading) => (
-        <li key={heading.value} className={`${heading.depth >= indentDepth && 'ml-6'}`}>
-          <a href={heading.url}>{heading.value}</a>
+        <li
+          key={heading.value}
+          style={{
+            marginLeft: `${(heading.depth - 1) * 24}px`,
+          }}
+        >
+          <a
+            className="hover-underline-animation py-1 !text-gray-800 !no-underline dark:!text-gray-200"
+            href={heading.url}
+          >
+            {heading.value}
+          </a>
         </li>
       ))}
     </ul>
@@ -67,7 +74,7 @@ const TOCInline = ({
     <>
       {asDisclosure ? (
         <details open>
-          <summary className="ml-6 pt-2 pb-2 text-xl font-bold">Table of Contents</summary>
+          <summary className="pt-2 pb-2 text-xl font-bold">Table of Contents</summary>
           <div className="ml-6">{tocList}</div>
         </details>
       ) : (
