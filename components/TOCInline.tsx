@@ -60,7 +60,7 @@ const TOCInline = ({
           }}
         >
           <a
-            className="hover-underline-animation py-1 !text-gray-800 !no-underline dark:!text-gray-200"
+            className="hover-underline-animation relative z-50 py-1 !text-gray-800 !no-underline dark:!text-gray-200"
             href={heading.url}
           >
             {heading.value}
