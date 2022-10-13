@@ -4,6 +4,7 @@ import { getMDXComponent } from 'mdx-bundler/client'
 import Image from './Image'
 import CustomLink from './Link'
 import TOCInline from './TOCInline'
+import Details from './Details'
 import Pre from './Pre'
 import Table from './Table'
 import { BlogNewsletterForm } from './NewsletterForm'
@@ -23,6 +24,7 @@ export type MDXComponentsWrapperProps = {
 export const MDXComponents: MDXComponentsBasicProps = {
   Image,
   TOCInline,
+  Details,
   // @ts-ignore
   a: CustomLink,
   pre: Pre,
