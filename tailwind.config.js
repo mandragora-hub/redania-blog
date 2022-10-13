@@ -91,25 +91,13 @@ module.exports = {
             'code::after': {
               content: 'none',
             },
-            details: {
-              backgroundColor: theme('colors.gray.100'),
-              paddingLeft: '4px',
-              paddingRight: '4px',
-              paddingTop: '2px',
-              paddingBottom: '2px',
-              borderRadius: '0.25rem',
-            },
+            details: false,
             hr: {
               borderColor: theme('colors.neutral.400'),
               margin: theme('spacing.header'),
             },
-            'ol li::marker': {
-              fontWeight: '600',
-              color: theme('colors.gray.500'),
-            },
-            'ul li::marker': {
-              backgroundColor: theme('colors.gray.500'),
-            },
+            ul: false,
+            li: false,
             strong: { color: theme('colors.gray.600') },
             blockquote: {
               color: theme('colors.gray.900'),
@@ -150,17 +138,10 @@ module.exports = {
             // code: {
             //   backgroundColor: theme('colors.gray.800'),
             // },
-            details: {
-              backgroundColor: theme('colors.gray.800'),
-            },
+            // details: {
+            //   backgroundColor: theme('colors.gray.800'),
+            // },
             hr: { borderColor: theme('colors.gray.700') },
-            'ol li::marker': {
-              fontWeight: '600',
-              color: theme('colors.gray.400'),
-            },
-            'ul li::marker': {
-              backgroundColor: theme('colors.gray.400'),
-            },
             strong: { color: theme('colors.gray.100') },
             thead: {
               th: {
