@@ -14,14 +14,14 @@
   }
 
   .current-active-section p::before {
-    @apply absolute text-rose-500 -left-1;
-    content: attr(data-before); 
+    @apply absolute -left-1 text-rose-500;
+    content: attr(data-before);
   }
 }
 
 @layer components {
   .pagescroll-progress-wrapper {
-    @apply w-[2px] h-full -left-4 absolute;
+    @apply absolute -left-4 h-full w-[2px];
     transition: opacity 0.75s ease-in-out;
   }
 
@@ -58,17 +58,16 @@
     @apply bg-no-repeat transition-all duration-200 ease-in-out;
     /* transition: background-size .5s ease-in-out; */
   }
-  
+
   .hover-underline-animation::after {
-    @apply absolute w-full origin-bottom-right h-0.5 bottom-0 left-0 scale-x-0 content-[""];
+    @apply absolute bottom-0 left-0 h-0.5 w-full origin-bottom-right scale-x-0 content-[""];
     background-color: theme('colors.secondary.900');
-    transition: transform .15s ease-out;;
+    transition: transform 0.15s ease-out;
   }
 
   .hover-underline-animation:hover::after {
-    @apply scale-100 origin-bottom-left;
+    @apply origin-bottom-left scale-100;
   }
-
 }
 
 .task-list-item::before {
@@ -131,29 +130,28 @@ input:-webkit-autofill:focus {
 
 @layer utilities {
   .prose :hover > .link-anchor {
-    @apply visible no-underline
+    @apply visible no-underline;
   }
-  
+
   .prose .link-anchor:hover {
     @apply visible;
-  } 
+  }
   .prose .link-anchor {
     @apply invisible absolute -ml-6 w-4/5 max-w-screen-md cursor-pointer pr-2 no-underline;
   }
-  
+
   .prose .link-anchor::after {
     @apply text-neutral-700 content-["#"];
   }
 }
 
 @layer base {
-
   .prose pre {
     @apply mt-0 mb-0 rounded bg-zinc-50 text-neutral-800;
   }
 
   .prose pre code {
-    @apply text-neutral-800 bg-transparent border-0 rounded-none p-0 font-normal;
+    @apply rounded-none border-0 bg-transparent p-0 font-normal text-neutral-800;
     @apply text-inherit;
   }
 
@@ -167,5 +165,4 @@ input:-webkit-autofill:focus {
     margin: 0 0.05em 0 0.1em;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%233B82F6' d='M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z' /%3E%3C/svg%3E");
   }
-
 }

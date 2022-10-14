@@ -106,7 +106,7 @@ export default function PostLayout({
             </div>
             <div className="flex flex-col">
               <div
-                className="border-day dark:border-night border-2 bg-day bg-opacity-50 dark:bg-night dark:bg-opacity-75 xl:grid xl:grid-cols-4 xl:gap-x-6"
+                className="border-2 border-day bg-day bg-opacity-50 dark:border-night dark:bg-night dark:bg-opacity-75 xl:grid xl:grid-cols-4 xl:gap-x-6"
                 style={{ gridTemplateRows: 'auto 1fr' }}
               >
                 <div className="prose max-w-none pt-10 pb-8 dark:prose-dark xl:col-span-3 xl:row-span-2">

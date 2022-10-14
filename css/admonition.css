@@ -2,8 +2,8 @@
 
 @layer components {
   .admonition {
-    @apply my-8 mx-12 p-8 rounded-lg border-l-2 shadow-md relative;
-    
+    @apply relative my-8 mx-12 rounded-lg border-l-2 p-8 shadow-md;
+
     /* color schema var  */
     --note: theme('colors.stone.400');
     --note-bg: theme('colors.stone.100');
@@ -32,13 +32,13 @@
   .admonition-content {
     @apply flex flex-col justify-center leading-relaxed;
   }
-  
+
   .admonition-content > p {
     @apply my-1;
   }
 
   .admonition-icon {
-    @apply rounded-full h-11 w-11 bg-day mr-0.5 inline-flex flex-col justify-center items-center absolute -left-3.5 -top-3 cursor-pointer;
+    @apply absolute -left-3.5 -top-3 mr-0.5 inline-flex h-11 w-11 cursor-pointer flex-col items-center justify-center rounded-full bg-day;
   }
 
   .admonition-icon svg {
@@ -111,7 +111,7 @@
     background-color: var(--warning-bg);
     border-left-color: var(--warning);
   }
-  
+
   .admonition-warning .admonition-icon svg {
     fill: var(--warning);
     stroke: var(--warning);
@@ -121,7 +121,7 @@
     background-color: var(--caution-bg);
     border-left-color: var(--caution);
   }
-  
+
   .admonition-caution .admonition-icon svg {
     fill: var(--caution);
     stroke: var(--caution);
@@ -131,7 +131,7 @@
     background-color: var(--comment-bg);
     border-left-color: var(--comment);
   }
-  
+
   .admonition-comment .admonition-icon svg {
     fill: var(--comment);
     stroke: var(--comment);
@@ -141,7 +141,7 @@
     background-color: var(--docs-bg);
     border-left-color: var(--docs);
   }
-  
+
   .admonition-docs .admonition-icon svg {
     fill: var(--docs);
     stroke: var(--docs);
@@ -150,5 +150,4 @@
   .admonition-important {
     @apply border-blue-500 bg-blue-100;
   }
-
 }

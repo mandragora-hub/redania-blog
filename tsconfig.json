@@ -25,6 +25,15 @@
     },
     "baseUrl": "."
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "scripts/compose.js", "scripts/generate-sitemap.js", "scripts/next-remote-watch.js", "scripts/next-remote-watch.js", "data/siteMetadata.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "scripts/compose.js",
+    "scripts/generate-sitemap.js",
+    "scripts/next-remote-watch.js",
+    "scripts/next-remote-watch.js",
+    "data/siteMetadata.js"
+  ],
   "exclude": ["node_modules"]
 }

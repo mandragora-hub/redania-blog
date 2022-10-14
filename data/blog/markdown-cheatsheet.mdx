@@ -142,7 +142,6 @@ Alternatively, on the line below the text, add any number of == characters for h
 | Emphasis, aka bold, with<br/>`**asterisks**` or<br/>`__underscores__` | Emphasis, aka bold, with<br/>`<strong>asterisks</strong>` or<br/>`<strong>underscores</strong>` | Emphasis, aka bold, with<br/><strong>asterisks</strong> or<br/><strong>underscores</strong> |
 | Combined emphasis with<br/>`**asterisks and <br/>__underscores__**`   | Combined emphasis with <strong>asterisks and underscores</strong>                               | Combined emphasis with <strong>asterisks and underscores</strong>                           |
 
-
 # Strikethrough
 
 Any word wrapped with two tildes (like `~~this~~`) will appear ~~crossed out~~.
@@ -272,7 +271,6 @@ To show line numbers, add the meta `showLineNumbers`.
 ```
 ````
 
-
 Line numbers can be started at an arbitrary point as well using the meta `showLineNumbers=n`, where `n = digits`.
 
 ````javascript title="rehype.js" showLineNumbers=65
@@ -298,8 +296,6 @@ Line highlighting can be done using the meta `{n}`.
 - `{2}` - This will highlight line #2.
 - `{2,4,6}` - This will highlight line #2, #4 and #6 only.
 - `{2-10}` - This will highlight line #2 through #10 (inclusive).
-
-
 
 ````html title="sample.html" showLineNumbers {2,4,6}
 ```html title="sample.html" showLineNumbers {2,4,6}
@@ -378,6 +374,7 @@ public class Order
     public List<int> Products { get; set; }
 }
 ```
+
 </Details>
 
 # Horizontal Rule
@@ -385,15 +382,17 @@ public class Order
 Three or more Hyphens `---`, Asterisks `***`, or Underscores `___` will render a `<hr>`.
 
 ---
-***
-___
+
+---
+
+---
 
 ===
 
 # Footnotes
 
-Footnotes allow to add notes and references at the end of the document, like Wikipedia. 
-When you create a footnote, a superscript number with a link appears where you added the footnote reference. 
+Footnotes allow to add notes and references at the end of the document, like Wikipedia.
+When you create a footnote, a superscript number with a link appears where you added the footnote reference.
 Clicking on the link to jumps to the content of the footnote at the bottom of the page. To create a footnote reference, add a caret and an identifier inside brackets `The Big Bang Theory[^1]`
 
 - First Footnote[^1]
@@ -401,7 +400,6 @@ Clicking on the link to jumps to the content of the footnote at the bottom of th
 - Third Footnote[^3]
 - Random strings as the identifier`[^@#$%]`
 - Footnotes with some URL in it[^5]
-
 
 [^1]: First Footnote
 [^2]: Second Footnote

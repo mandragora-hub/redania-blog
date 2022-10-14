@@ -1,42 +1,42 @@
 @tailwind base;
 
 @layer base {
-    details {
-        @apply my-2 cursor-pointer rounded border border-neutral-300 bg-neutral-200/[0.5] p-2 shadow;    
-    }
-    
-    details > summary {
-        @apply mx-4 py-2 text-lg font-bold;
-    }
+  details {
+    @apply my-2 cursor-pointer rounded border border-neutral-300 bg-neutral-200/[0.5] p-2 shadow;
+  }
 
-    summary {
-        @apply list-item;
-    }
+  details > summary {
+    @apply mx-4 py-2 text-lg font-bold;
+  }
 
-    details[open] > summary {
-        @apply border-b-2 border-neutral-300;
-    }
+  summary {
+    @apply list-item;
+  }
 
-    .prose ul {
-        @apply my-5;
-    }
+  details[open] > summary {
+    @apply border-b-2 border-neutral-300;
+  }
 
-    .prose ul li {
-        @apply list-none;
-    }
+  .prose ul {
+    @apply my-5;
+  }
 
-    .prose ul > li {
-        @apply relative pl-7;
-    }
-    
-    .prose li {
-        @apply my-2;
-    }
+  .prose ul li {
+    @apply list-none;
+  }
 
-    .prose ul li::before {
-     @apply absolute inset-0 left-0 font-semibold px-2 py-0;
-     content: "❯";
-        
-        /* color: #f65252; */
-    }
+  .prose ul > li {
+    @apply relative pl-7;
+  }
+
+  .prose li {
+    @apply my-2;
+  }
+
+  .prose ul li::before {
+    @apply absolute inset-0 left-0 px-2 py-0 font-semibold;
+    content: '❯';
+
+    /* color: #f65252; */
+  }
 }
