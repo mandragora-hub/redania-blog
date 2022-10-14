@@ -33,8 +33,8 @@ module.exports = {
         primary: colors.blue,
         secondary: colors.stone,
         gray: colors.neutral,
-        day: colors.yellow[50],
-        night: colors.gray[900],
+        day: '#fff',
+        night: '#000000',
       },
       backgroundColor: {
         accent: colors.stone[900],

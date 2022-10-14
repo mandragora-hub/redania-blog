@@ -2,6 +2,7 @@ import '@/css/admonition.css'
 import '@/css/collapsible.css'
 import '@/css/tailwind.css'
 import '@/css/prism.css'
+import '@/css/background.css'
 import 'katex/dist/katex.css'
 
 import '@fontsource/red-hat-mono/variable.css'
