@@ -1,6 +1,7 @@
 import Image from './Image'
 import Link from './Link'
 import formatDate from '@/lib/utils/formatDate'
+import Capitalize from '@/lib/utils/capitalize'
 
 type Props = {
   title: string
@@ -31,7 +32,7 @@ const Card = ({ title, description, imgSrc, href, date, tag }: Props) => (
       <div className="space-y-2 py-4">
         <div className="inline-flex w-full items-center justify-between">
           <span className="inline-block rounded border border-gray-700 py-1.5 px-2.5 text-xs font-medium hover:bg-gray-100">
-            {tag}
+            {Capitalize(tag)}
           </span>
           <time className="text-base font-semibold" dateTime={date}>
             {formatDate(date)}

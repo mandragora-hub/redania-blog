@@ -9,6 +9,8 @@ import Comments from '@/components/comments'
 import TableOfContents from '@/components/TableOfContents'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import { TocHeading, AuthorDetailsTypes, FrontMatterType } from '@/common/types'
+import kebabCase from '@/lib/utils/kebabCase'
+import Capitalize from '@/lib/utils/capitalize'
 
 type PostLayoutProps = {
   frontMatter: FrontMatterType
@@ -63,9 +65,9 @@ export default function PostLayout({
               <div className="-mx-2">
                 {tags.map((tag) => {
                   return (
-                    <Link key={tag} href={`/tags${tag}`}>
+                    <Link key={tag} href={`/tags/${kebabCase(tag)}`}>
                       <span className="hover:border-accent mx-2 inline-block rounded border border-gray-700 py-1 px-2 text-xs font-medium">
-                        {tag}
+                        {Capitalize(tag)}
                       </span>
                     </Link>
                   )
