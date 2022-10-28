@@ -3,23 +3,22 @@ import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import { getFileBySlug } from '@/lib/mdx'
 import { FrontMatterType } from '@/common/types'
 
-const DEFAULT_LAYOUT = 'AuthorLayout'
+const DEFAULT_LAYOUT = 'AboutLayout'
 
 export const getStaticProps: GetStaticProps = async () => {
-  const authorDetails = await getFileBySlug('authors', ['default'])
-  return { props: { authorDetails } }
+  const aboutData = await getFileBySlug('authors', ['default'])
+  return { props: { aboutData } }
 }
 
 type AboutPageProps = {
-  authorDetails: {
+  aboutData: {
     mdxSource: string
-    toc?: any
     frontMatter: FrontMatterType
   }
 }
 
-export default function About({ authorDetails }: AboutPageProps) {
-  const { mdxSource, frontMatter } = authorDetails
+export default function About({ aboutData }: AboutPageProps) {
+  const { mdxSource, frontMatter } = aboutData
 
   return (
     <MDXLayoutRenderer
