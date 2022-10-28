@@ -6,7 +6,7 @@ import { PageSEO } from '@/components/SEO'
 import { AuthorFrontMatterTypes } from '@/common/types'
 import TextScramble from '@/components/TextScramble'
 
-type AuthorLayoutProps = {
+type AboutLayoutProps = {
   children: React.ReactNode
   frontMatter: AuthorFrontMatterTypes
 }
@@ -187,7 +187,7 @@ const WorkedOn = () => {
   )
 }
 
-export default function AuthorLayout({ children, frontMatter }: AuthorLayoutProps) {
+export default function AuthorLayout({ children, frontMatter }: AboutLayoutProps) {
   const { name, avatar, occupation, company, email, twitter, linkedin, github } = frontMatter
 
   return (
