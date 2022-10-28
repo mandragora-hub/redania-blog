@@ -187,7 +187,7 @@ const WorkedOn = () => {
   )
 }
 
-export default function AuthorLayout({ children, frontMatter }: AboutLayoutProps) {
+export default function AboutLayout({ children, frontMatter }: AboutLayoutProps) {
   const { name, avatar, occupation, company, email, twitter, linkedin, github } = frontMatter
 
   return (
