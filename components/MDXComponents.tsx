@@ -40,7 +40,7 @@ export type MDXLayoutRendererProps = {
   layout: string
   mdxSource: string
   frontMatter: FrontMatterType
-  toc: TocHeading[]
+  toc?: TocHeading[]
   authorDetails?: AuthorFrontMatterTypes
   prev?: FrontMatterType
   next?: FrontMatterType
