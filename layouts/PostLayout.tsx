@@ -12,6 +12,7 @@ import { TocHeading, AuthorDetailsTypes, FrontMatterType } from '@/common/types'
 import kebabCase from '@/lib/utils/kebabCase'
 import Capitalize from '@/lib/utils/capitalize'
 import DOMPurify from 'isomorphic-dompurify'
+import path from 'path'
 
 type PostLayoutProps = {
   frontMatter: FrontMatterType
@@ -92,7 +93,7 @@ export default function PostLayout({
               <div className="relative flex flex-col items-center">
                 <img
                   className="my-4 mx-auto overflow-hidden rounded-lg object-cover shadow-lg md:w-3/4"
-                  alt={'fsdf'}
+                  alt={path.parse(images[0]).name}
                   src={images[0]}
                 />
                 {imageCaption && (
