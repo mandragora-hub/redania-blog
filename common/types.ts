@@ -39,6 +39,7 @@ export type BasicFrontMatterType = {
   tags: string[]
   summary: string
   images?: string[]
+  imageCaption?: string
   draft?: boolean
 }
 
