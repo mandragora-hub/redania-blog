@@ -1,9 +1,9 @@
 import { escape } from '@/lib/utils/htmlEscaper'
 
 import siteMetadata from '@/data/siteMetadata'
-import { FrontMatterType } from '@/common/types'
+import { PostFrontMatter } from '@/common/types'
 
-const generateRssItem = (post: FrontMatterType) => `
+const generateRssItem = (post: PostFrontMatter) => `
   <item>
     <guid>${siteMetadata.siteUrl}/blog/${post.slug}</guid>
     <title>${escape(post.title)}</title>
@@ -15,7 +15,7 @@ const generateRssItem = (post: FrontMatterType) => `
   </item>
 `
 
-const generateRss = (posts: FrontMatterType[], page = 'feed.xml') => `
+const generateRss = (posts: PostFrontMatter[], page = 'feed.xml') => `
   <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
       <title>${escape(siteMetadata.title)}</title>

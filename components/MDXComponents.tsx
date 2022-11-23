@@ -9,7 +9,7 @@ import Pre from './Pre'
 import Table from './Table'
 import { BlogNewsletterForm } from './NewsletterForm'
 import { MDXComponents as MDXComponentsBasicProps } from 'mdx/types'
-import { TocHeading, AuthorFrontMatterTypes, FrontMatterType } from '@/common/types'
+import { TocHeading, FrontMatter } from '@/common/types'
 
 export type MDXComponentsWrapperProps = {
   layout?: string
@@ -39,11 +39,11 @@ export const MDXComponents: MDXComponentsBasicProps = {
 export type MDXLayoutRendererProps = {
   layout: string
   mdxSource: string
-  frontMatter: FrontMatterType
+  frontMatter: FrontMatter
   toc?: TocHeading[]
-  authorDetails?: AuthorFrontMatterTypes
-  prev?: FrontMatterType
-  next?: FrontMatterType
+  authorFrontMatter?: FrontMatter
+  prev?: FrontMatter
+  next?: FrontMatter
 }
 
 export const MDXLayoutRenderer = ({ layout, mdxSource, ...rest }: MDXLayoutRendererProps) => {

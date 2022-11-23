@@ -9,7 +9,7 @@ import { getAllTags } from '@/lib/tags'
 import kebabCase from '@/lib/utils/kebabCase'
 import fs from 'fs'
 import path from 'path'
-import { FrontMatterType } from '@/common/types'
+import { PostFrontMatter } from '@/common/types'
 
 const root = process.cwd()
 
@@ -31,13 +31,13 @@ interface Params extends ParsedUrlQuery {
 }
 
 type TagPageProps = {
-  posts: FrontMatterType[]
+  posts: PostFrontMatter[]
   tag: string
 }
 
 export const getStaticProps: GetStaticProps<TagPageProps, Params> = async (context) => {
   const params = context.params!
-  const allPosts = await getAllFilesFrontMatter('blog')
+  const allPosts = (await getAllFilesFrontMatter('blog')) as PostFrontMatter[]
   const filteredPosts = allPosts.filter(
     (post) => post.draft !== true && post.tags?.map((t) => kebabCase(t)).includes(params.tag)
   )

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import siteMetadata from '@/data/siteMetadata'
-import { AuthorDetailsTypes } from '@/common/types'
+import { AuthorFrontMatter } from '@/common/types'
 
 type OgImageTypes = {
   '@type': string
@@ -21,7 +21,7 @@ interface SEOProps extends BasicSEOProps {
 }
 
 interface SEOBlogProps {
-  authorDetails?: AuthorDetailsTypes[]
+  authorDetails?: AuthorFrontMatter[]
   title: string
   summary: string
   date: string

@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next'
 import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import { getFileBySlug } from '@/lib/mdx'
-import { FrontMatterType } from '@/common/types'
+import { FrontMatter } from '@/common/types'
 
 const DEFAULT_LAYOUT = 'AboutLayout'
 
@@ -13,7 +13,7 @@ export const getStaticProps: GetStaticProps = async () => {
 type AboutPageProps = {
   aboutData: {
     mdxSource: string
-    frontMatter: FrontMatterType
+    frontMatter: FrontMatter
   }
 }
 
@@ -22,7 +22,7 @@ export default function About({ aboutData }: AboutPageProps) {
 
   return (
     <MDXLayoutRenderer
-      layout={frontMatter.layout || DEFAULT_LAYOUT}
+      layout={(frontMatter.layout as string) || DEFAULT_LAYOUT}
       mdxSource={mdxSource}
       frontMatter={frontMatter}
     />

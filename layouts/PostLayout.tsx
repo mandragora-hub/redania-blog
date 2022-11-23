@@ -8,18 +8,18 @@ import siteMetadata from '@/data/siteMetadata'
 import Comments from '@/components/comments'
 import TableOfContents from '@/components/TableOfContents'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
-import { TocHeading, AuthorDetailsTypes, FrontMatterType } from '@/common/types'
+import { TocHeading, AuthorFrontMatter, PostFrontMatter } from '@/common/types'
 import kebabCase from '@/lib/utils/kebabCase'
 import Capitalize from '@/lib/utils/capitalize'
 import DOMPurify from 'isomorphic-dompurify'
 import path from 'path'
 
 type PostLayoutProps = {
-  frontMatter: FrontMatterType
+  frontMatter: PostFrontMatter
   toc: TocHeading[]
-  authorDetails: AuthorDetailsTypes[]
-  next: FrontMatterType
-  prev: FrontMatterType
+  authorDetails: AuthorFrontMatter[]
+  next: PostFrontMatter
+  prev: PostFrontMatter
   children: React.ReactNode
 }
 
