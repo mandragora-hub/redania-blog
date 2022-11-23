@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import fs from 'fs'
 import PageTitle from '@/components/PageTitle'
@@ -27,12 +27,11 @@ interface Params extends ParsedUrlQuery {
 
 type BlogPageProps = {
   post: PostType
-  authorFrontMatter: FrontMatter
+  authorFrontMatter: FrontMatter[]
   prev: FrontMatter
   next: FrontMatter
 }
 
-// @ts-ignore
 export const getStaticProps: GetStaticProps<BlogPageProps, Params> = async (context) => {
   const params = context.params!
   const allPosts = await getAllFilesFrontMatter('blog')
@@ -58,7 +57,12 @@ export const getStaticProps: GetStaticProps<BlogPageProps, Params> = async (cont
   return { props: { post, authorFrontMatter, prev, next } }
 }
 
-export default function Blog({ post, authorFrontMatter, prev, next }: BlogPageProps) {
+export default function Blog({
+  post,
+  authorFrontMatter,
+  prev,
+  next,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const { mdxSource, toc, frontMatter } = post
 
   return (
@@ -69,7 +73,7 @@ export default function Blog({ post, authorFrontMatter, prev, next }: BlogPagePr
           toc={toc}
           mdxSource={mdxSource}
           frontMatter={frontMatter}
-          authorFrontMatter={authorFrontMatter}
+          authorFrontMatter={authorFrontMatter[0]}
           prev={prev}
           next={next}
         />
