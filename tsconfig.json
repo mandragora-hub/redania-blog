@@ -33,7 +33,8 @@
     "scripts/generate-sitemap.js",
     "scripts/next-remote-watch.js",
     "scripts/next-remote-watch.js",
-    "data/siteMetadata.js"
+    "data/siteMetadata.js",
+    "jest-setup.ts"
   ],
   "exclude": ["node_modules"]
 }
