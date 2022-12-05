@@ -8,16 +8,18 @@ import siteMetadata from '@/data/siteMetadata'
 import Comments from '@/components/comments'
 import TableOfContents from '@/components/TableOfContents'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
-import { TocHeading, AuthorDetailsTypes, FrontMatterType } from '@/common/types'
+import { TocHeading, AuthorFrontMatter, PostFrontMatter } from '@/common/types'
 import kebabCase from '@/lib/utils/kebabCase'
 import Capitalize from '@/lib/utils/capitalize'
+import DOMPurify from 'isomorphic-dompurify'
+import path from 'path'
 
 type PostLayoutProps = {
-  frontMatter: FrontMatterType
+  frontMatter: PostFrontMatter
   toc: TocHeading[]
-  authorDetails: AuthorDetailsTypes[]
-  next: FrontMatterType
-  prev: FrontMatterType
+  authorDetails: AuthorFrontMatter[]
+  next: PostFrontMatter
+  prev: PostFrontMatter
   children: React.ReactNode
 }
 
@@ -45,7 +47,7 @@ export default function PostLayout({
   prev,
   children,
 }: PostLayoutProps) {
-  const { slug, fileName, date, title, images, tags, readingTime } = frontMatter
+  const { slug, fileName, date, title, images, imageCaption, tags, readingTime } = frontMatter
 
   return (
     <SectionContainer>
@@ -87,23 +89,21 @@ export default function PostLayout({
             </div>
           </header>
           <div className="divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:divide-y-0">
-            <div className="relative flex flex-col items-center">
-              <img
-                className="my-4 mx-auto overflow-hidden rounded-lg object-cover shadow-lg md:w-3/4"
-                alt={'fsdf'}
-                src="/static/images/time-machine.jpg"
-              />
-              <span className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                Photo by{' '}
-                <a className="text-highlight" href="https://unsplash.com/@markusspiske">
-                  Markus Spiske
-                </a>{' '}
-                on{' '}
-                <a className="text-highlight" href="https://unsplash.com/photos/KTuHfak_EEk">
-                  Unsplash
-                </a>
-              </span>
-            </div>
+            {images && (
+              <div className="relative flex flex-col items-center">
+                <img
+                  className="my-4 mx-auto overflow-hidden rounded-lg object-cover shadow-lg md:w-3/4"
+                  alt={path.parse(images[0]).name}
+                  src={images[0]}
+                />
+                {imageCaption && (
+                  <span
+                    className="anchor-highlight text-base font-medium leading-6 text-gray-500 dark:text-gray-400"
+                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(imageCaption) }}
+                  />
+                )}
+              </div>
+            )}
             <div className="flex flex-col">
               <div
                 className="border-2 border-day bg-day bg-opacity-50 dark:border-night dark:bg-night dark:bg-opacity-75 xl:grid xl:grid-cols-4 xl:gap-x-6"

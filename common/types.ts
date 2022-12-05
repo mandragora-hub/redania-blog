@@ -20,40 +20,33 @@ export type PaginationType = {
   currentPage: number
 }
 
+export type FrontMatter = {
+  [key: string]: string | string[] | boolean | ReadTimeResults
+}
+
 export type PostType = {
   mdxSource: string
   toc: TocHeading[]
-  frontMatter: ExtendFrontMatterType
+  frontMatter: FrontMatter
 }
 
-export type AuthorDetailsTypes = {
-  '@type': string
-  name: string
-  avatar?: string
-  twitter?: string
-}
-
-export type BasicFrontMatterType = {
+export type PostFrontMatter = {
   title: string
-  date: string
   tags: string[]
+  draft: boolean
   summary: string
   images?: string[]
-  draft?: boolean
-}
-
-export interface ExtendFrontMatterType extends BasicFrontMatterType {
-  slug: string
-  fileName?: string
-  readingTime: ReadTimeResults
-  layout?: string
+  imageCaption?: string
   authors?: string[]
-  bibliography?: string
+
+  slug: string
+  fileName: string
+  readingTime: ReadTimeResults
+  date: string
+  layout?: string
 }
 
-export type FrontMatterType = ExtendFrontMatterType
-
-export type AuthorFrontMatterTypes = {
+export type AuthorFrontMatter = {
   name: string
   avatar: string
   occupation: string

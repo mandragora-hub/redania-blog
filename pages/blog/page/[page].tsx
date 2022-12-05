@@ -4,7 +4,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import ListLayout from '@/layouts/ListLayout'
 import { POSTS_PER_PAGE } from '../../blog'
-import { FrontMatterType, PaginationType } from '@/common/types'
+import { PostFrontMatter, PaginationType } from '@/common/types'
 import { ParsedUrlQuery } from 'querystring'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -25,14 +25,14 @@ interface Params extends ParsedUrlQuery {
 }
 
 type ListLayoutProps = {
-  posts: FrontMatterType[]
-  initialDisplayPosts?: FrontMatterType[]
+  posts: PostFrontMatter[]
+  initialDisplayPosts?: PostFrontMatter[]
   pagination: PaginationType
 }
 
 export const getStaticProps: GetStaticProps<ListLayoutProps, Params> = async (context) => {
   const page = context.params!.page
-  const posts = await getAllFilesFrontMatter('blog')
+  const posts = (await getAllFilesFrontMatter('blog')) as PostFrontMatter[]
   const pageNumber = parseInt(page)
   const initialDisplayPosts = posts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),

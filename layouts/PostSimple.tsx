@@ -7,19 +7,19 @@ import siteMetadata from '@/data/siteMetadata'
 import formatDate from '@/lib/utils/formatDate'
 import Comments from '@/components/comments'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
-import { FrontMatterType, AuthorDetailsTypes } from '@/common/types'
+import { PostFrontMatter } from '@/common/types'
 
 type PostSimpleProps = {
-  frontMatter: FrontMatterType
-  authorDetails: AuthorDetailsTypes[]
-  next: FrontMatterType
-  prev: FrontMatterType
+  frontMatter: PostFrontMatter
+  // authorDetails: AuthorFrontMatter[]
+  next: PostFrontMatter
+  prev: PostFrontMatter
   children: React.ReactNode
 }
 
 export default function PostLayout({
   frontMatter,
-  authorDetails,
+  // authorDetails,
   next,
   prev,
   children,
