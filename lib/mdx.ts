@@ -23,7 +23,7 @@ import rehypeCitation from 'rehype-citation'
 import rehypePrismPlus from 'rehype-prism-plus'
 import rehypePresetMinify from 'rehype-preset-minify'
 import rehypeCodeTitles from './rehype-code-title'
-import { TocHeading, FrontMatterType, PostType } from '@/common/types'
+import { TocHeading, PostType, FrontMatter } from '@/common/types'
 
 const root = process.cwd()
 
@@ -107,18 +107,18 @@ export async function getFileBySlug(type: string, slug: string | string[]): Prom
       readingTime: readingTime(code),
       slug: slug || null,
       fileName: fs.existsSync(mdxPath) ? `${slug}.mdx` : `${slug}.md`,
-      ...frontmatter,
       date: frontmatter.date ? new Date(frontmatter.date).toISOString() : null,
+      ...frontmatter,
     },
   }
 }
 
-export async function getAllFilesFrontMatter(folder: string): Promise<FrontMatterType[]> {
+export async function getAllFilesFrontMatter(folder: string): Promise<FrontMatter[]> {
   const prefixPaths = path.join(root, 'data', folder)
 
   const files = getAllFilesRecursively(prefixPaths)
 
-  const allFrontMatter: FrontMatterType[] = []
+  const allFrontMatter: FrontMatter[] = []
 
   // @ts-ignore
   files.forEach((file) => {
@@ -132,16 +132,20 @@ export async function getAllFilesFrontMatter(folder: string): Promise<FrontMatte
     const { data: frontmatter } = matter(source)
     if (frontmatter.draft !== true) {
       allFrontMatter.push({
-        slug: formatSlug(fileName),
-        readingTime: readingTime(source),
-        date: frontmatter.date ? new Date(frontmatter.date).toISOString() : '',
         title: frontmatter.title,
         summary: frontmatter.summary,
         tags: frontmatter.tags,
+        draft: frontmatter.draft,
+        slug: formatSlug(fileName),
+        readingTime: readingTime(source),
+        date: frontmatter.date ? new Date(frontmatter.date).toISOString() : '',
+        fileName: fileName,
         ...frontmatter,
       })
     }
   })
 
-  return allFrontMatter.sort((a, b) => dateSortDesc(parseInt(a.date), parseInt(b.date)))
+  return allFrontMatter.sort((a, b) =>
+    dateSortDesc(parseInt(a.date as string), parseInt(b.date as string))
+  )
 }

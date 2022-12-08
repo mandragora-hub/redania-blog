@@ -4,12 +4,12 @@ import siteMetadata from '@/data/siteMetadata'
 import { useState } from 'react'
 import Pagination from '@/components/Pagination'
 import formatDate from '@/lib/utils/formatDate'
-import { PaginationType, FrontMatterType } from '@/common/types'
+import { PaginationType, PostFrontMatter } from '@/common/types'
 
 type ListLayoutProps = {
-  posts: FrontMatterType[]
+  posts: PostFrontMatter[]
   title: string
-  initialDisplayPosts?: FrontMatterType[]
+  initialDisplayPosts?: PostFrontMatter[]
   pagination?: PaginationType
 }
 

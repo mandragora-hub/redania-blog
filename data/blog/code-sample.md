@@ -3,6 +3,8 @@ title: Sample .md file
 date: '2016-03-08'
 tags: ['markdown', 'code', 'features']
 draft: false
+images: [/static/images/dell-unsplash.jpg]
+imageCaption: Photo by <a href="https://unsplash.com/@dell?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dell</a> on <a href="https://unsplash.com/explore?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 summary: Example of a markdown file with code blocks and syntax highlighting
 ---
 

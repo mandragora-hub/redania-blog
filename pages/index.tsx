@@ -6,17 +6,17 @@ import Card from '@/components/Card'
 import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import NewsletterForm from '@/components/NewsletterForm'
-import { FrontMatterType } from '@/common/types'
+import { PostFrontMatter } from '@/common/types'
 
 const MAX_DISPLAY = 6
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getAllFilesFrontMatter('blog')
+  const posts = (await getAllFilesFrontMatter('blog')) as PostFrontMatter[]
 
   return { props: { posts } }
 }
 
-export default function Home({ posts }: { posts: FrontMatterType[] }) {
+export default function Home({ posts }: { posts: PostFrontMatter[] }) {
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />

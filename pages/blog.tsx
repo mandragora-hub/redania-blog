@@ -3,12 +3,12 @@ import { getAllFilesFrontMatter } from '@/lib/mdx'
 import siteMetadata from '@/data/siteMetadata'
 import ListLayout from '@/layouts/ListLayout'
 import { PageSEO } from '@/components/SEO'
-import { FrontMatterType, PaginationType } from '@/common/types'
+import { PostFrontMatter, PaginationType } from '@/common/types'
 
 export const POSTS_PER_PAGE = 5
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getAllFilesFrontMatter('blog')
+  const posts = (await getAllFilesFrontMatter('blog')) as PostFrontMatter[]
   const initialDisplayPosts = posts.slice(0, POSTS_PER_PAGE)
   const pagination = {
     currentPage: 1,
@@ -19,8 +19,8 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 type BlogPageProps = {
-  posts: FrontMatterType[]
-  initialDisplayPosts?: FrontMatterType[]
+  posts: PostFrontMatter[]
+  initialDisplayPosts?: PostFrontMatter[]
   pagination: PaginationType
 }
 
