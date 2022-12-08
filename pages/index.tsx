@@ -29,7 +29,7 @@ export default function Home({ posts }: { posts: PostFrontMatter[] }) {
               className="bg-growing-underline bg-gradient-to-r from-yellow-200 to-yellow-200"
               href="/about"
             >
-              Mandragora
+              {siteMetadata.author}
             </Link>{' '}
             <span className="wave" role="img">
               👋🏼
