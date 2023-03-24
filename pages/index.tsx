@@ -9,6 +9,7 @@ import NewsletterForm from '@/components/NewsletterForm'
 import { PostFrontMatter } from '@/common/types'
 
 const MAX_DISPLAY = 6
+const DEFAULT_IMAGE = '/static/images/time-machine.jpg'
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = (await getAllFilesFrontMatter('blog')) as PostFrontMatter[]
@@ -61,7 +62,7 @@ export default function Home({ posts }: { posts: PostFrontMatter[] }) {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
             {!posts.length && 'No posts found.'}
             {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
-              const { slug, date, title, summary, tags } = frontMatter
+              const { slug, date, title, summary, tags, images } = frontMatter
               return (
                 <article key={slug}>
                   <Card
@@ -69,7 +70,7 @@ export default function Home({ posts }: { posts: PostFrontMatter[] }) {
                     date={date}
                     description={summary}
                     tag={tags[0]}
-                    imgSrc={'/static/images/time-machine.jpg'}
+                    imgSrc={images && images.length > 0 ? images[0] : DEFAULT_IMAGE}
                     href={`/blog/${slug}`}
                   />
                 </article>
