@@ -7,7 +7,7 @@ import TagIcon from './hashtag.svg'
 
 const components = {
   Blog: BlogIcon,
-  Snippet: SnippetIcon,
+  Snippets: SnippetIcon,
   Tags: TagIcon,
 }
 

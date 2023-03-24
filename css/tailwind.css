@@ -201,3 +201,46 @@ input:-webkit-autofill:focus {
     @apply text-primary-500  no-underline hover:text-primary-600;
   }
 }
+
+@layer utilities {
+  .border-snippet-card-animation {
+    position: relative;
+    transition: all 0.5s;
+  }
+  .border-snippet-card-animation:hover {
+    filter: contrast(1.1);
+  }
+
+  .border-snippet-card-animation:active {
+    filter: contrast(0.9);
+  }
+
+  .border-snippet-card-animation::before,
+  .border-snippet-card-animation::after {
+    @apply absolute -inset-px rounded-lg border border-black;
+    content: '';
+    transition: all 0.5s;
+    animation: clippath 3s infinite linear;
+  }
+
+  .border-snippet-card-animation::after {
+    animation: clippath 3s infinite -1.5s linear;
+  }
+
+  @keyframes clippath {
+    0%,
+    100% {
+      clip-path: inset(0 0 98% 0);
+    }
+
+    25% {
+      clip-path: inset(0 98% 0 0);
+    }
+    50% {
+      clip-path: inset(98% 0 0 0);
+    }
+    75% {
+      clip-path: inset(0 0 0 98%);
+    }
+  }
+}

@@ -8,9 +8,9 @@ type TagProps = {
 const Tag = ({ text }: TagProps) => {
   return (
     <Link href={`/tags/${kebabCase(text)}`}>
-      <a className="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
+      <span className="inline-block rounded border border-gray-700 py-1 px-2 text-xs font-medium capitalize leading-tight">
         {text.split(' ').join('-')}
-      </a>
+      </span>
     </Link>
   )
 }

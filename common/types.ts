@@ -21,6 +21,11 @@ export type PaginationType = {
 }
 
 export type FrontMatter = {
+  title: string
+  date: string
+  tags: string[]
+  draft: boolean
+  summary: string
   [key: string]: string | string[] | boolean | ReadTimeResults
 }
 
@@ -30,20 +35,14 @@ export type PostType = {
   frontMatter: FrontMatter
 }
 
-export type PostFrontMatter = {
-  title: string
-  tags: string[]
-  draft: boolean
-  summary: string
-  images?: string[]
-  imageCaption?: string
-  authors?: string[]
+export interface PostFrontMatter extends FrontMatter {
+  images: string[]
+  imageCaption: string
+  authors: string[]
 
   slug: string
   fileName: string
   readingTime: ReadTimeResults
-  date: string
-  layout?: string
 }
 
 export type AuthorFrontMatter = {

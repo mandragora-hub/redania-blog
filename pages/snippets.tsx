@@ -6,20 +6,19 @@ import { PageSEO } from '@/components/SEO'
 import { FrontMatter } from '@/common/types'
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = (await getAllFilesFrontMatter('blog')) as FrontMatter[]
-
+  const posts = (await getAllFilesFrontMatter('snippets')) as FrontMatter[]
   return { props: { posts } }
 }
 
-type BlogPageProps = {
+type SnippetsPageProps = {
   posts: FrontMatter[]
 }
 
-export default function Blog({ posts }: BlogPageProps) {
+export default function Snippets({ posts }: SnippetsPageProps) {
   return (
     <>
-      <PageSEO title={`Blog - ${siteMetadata.author}`} description={siteMetadata.description} />
-      <ListLayout posts={posts} title="All Posts" />
+      <PageSEO title={`Snippets - ${siteMetadata.author}`} description={siteMetadata.description} />
+      <ListLayout type="snippets" posts={posts} title="All snippets" />
     </>
   )
 }

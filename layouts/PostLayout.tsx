@@ -9,8 +9,6 @@ import Comments from '@/components/comments'
 import TableOfContents from '@/components/TableOfContents'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 import { TocHeading, AuthorFrontMatter, PostFrontMatter } from '@/common/types'
-import kebabCase from '@/lib/utils/kebabCase'
-import Capitalize from '@/lib/utils/capitalize'
 import DOMPurify from 'isomorphic-dompurify'
 import path from 'path'
 
@@ -64,16 +62,10 @@ export default function PostLayout({
               <PageTitle>{title}</PageTitle>
             </div>
             <div className="flex w-full flex-wrap place-content-between items-center gap-4">
-              <div className="-mx-2">
-                {tags.map((tag) => {
-                  return (
-                    <Link key={tag} href={`/tags/${kebabCase(tag)}`}>
-                      <span className="hover:border-accent mx-2 inline-block rounded border border-gray-700 py-1 px-2 text-xs font-medium">
-                        {Capitalize(tag)}
-                      </span>
-                    </Link>
-                  )
-                })}
+              <div className="flex space-x-2">
+                {tags.map((tag, index) => (
+                  <Tag key={index} text={tag} />
+                ))}
               </div>
               <dl>
                 <div className="flex flex-row items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
@@ -90,7 +82,7 @@ export default function PostLayout({
           </header>
           <div className="divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:divide-y-0">
             {images && (
-              <div className="relative flex flex-col items-center">
+              <div className="flex relative flex-col items-center">
                 <img
                   className="my-4 mx-auto overflow-hidden rounded-lg object-cover shadow-lg md:w-3/4"
                   alt={path.parse(images[0]).name}
@@ -109,12 +101,18 @@ export default function PostLayout({
                 className="border-2 border-day bg-day bg-opacity-50 dark:border-night dark:bg-night dark:bg-opacity-75 xl:grid xl:grid-cols-4 xl:gap-x-6"
                 style={{ gridTemplateRows: 'auto 1fr' }}
               >
-                <div className="prose max-w-none pt-10 pb-8 dark:prose-dark xl:col-span-3 xl:row-span-2">
+                <div
+                  className={`prose max-w-none pt-10 pb-8 dark:prose-dark xl:row-span-2 ${
+                    toc.length ? 'xl:col-span-3' : 'xl:col-span-4'
+                  }`}
+                >
                   {children}
                 </div>
-                <div className="sticky top-4 hidden xl:top-8 xl:block">
-                  <TableOfContents toc={toc} />
-                </div>
+                {toc.length > 0 && (
+                  <div className="sticky top-4 hidden xl:top-8 xl:block">
+                    <TableOfContents toc={toc} />
+                  </div>
+                )}
               </div>
               <div className="border-b border-t border-gray-400 py-4 text-sm dark:border-gray-700">
                 <Link href={discussUrl(slug)} rel="nofollow">
@@ -127,18 +125,6 @@ export default function PostLayout({
             </div>
             <footer>
               <div className="divide-gray-200 text-sm font-medium leading-5 dark:divide-gray-700 xl:col-start-1 xl:row-start-2 xl:divide-y">
-                {tags && (
-                  <div className="py-4 xl:py-8">
-                    <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                      Tags
-                    </h2>
-                    <div className="flex flex-wrap">
-                      {tags.map((tag) => (
-                        <Tag key={tag} text={tag} />
-                      ))}
-                    </div>
-                  </div>
-                )}
                 {(next || prev) && (
                   <div className="flex justify-between py-4 xl:block xl:space-y-8 xl:py-8">
                     {prev && (
@@ -163,14 +149,6 @@ export default function PostLayout({
                     )}
                   </div>
                 )}
-              </div>
-              <div className="pt-4 xl:pt-8">
-                <Link
-                  href="/blog"
-                  className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                >
-                  &larr; Back to the blog
-                </Link>
               </div>
             </footer>
             {/* <dl className="pt-6 pb-10 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
