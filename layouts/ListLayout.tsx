@@ -61,7 +61,7 @@ export default function ListLayout({ posts, title, type = 'blog' }: ListLayoutPr
             const { slug } = frontMatter
             return (
               <li key={slug as string}>
-                <article>
+                <article className="h-full w-full [&>*]:h-full">
                   {type == 'blog' ? (
                     <BlogPostCard href={`/blog/${slug}`} {...frontMatter} />
                   ) : (
