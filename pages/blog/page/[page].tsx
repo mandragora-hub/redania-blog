@@ -3,7 +3,7 @@ import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import ListLayout from '@/layouts/ListLayout'
-import { FrontMatter } from '@/common/types'
+import { FrontMatter } from 'types'
 import { ParsedUrlQuery } from 'querystring'
 
 export const getStaticPaths: GetStaticPaths = async () => {

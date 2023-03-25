@@ -1,5 +1,5 @@
 import Link from '@/components/Link'
-import { PaginationType } from 'common/types'
+import { PaginationType } from 'types'
 
 export default function Pagination({ totalPages, currentPage }: PaginationType) {
   const prevPage = currentPage - 1 > 0

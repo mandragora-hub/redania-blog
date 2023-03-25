@@ -1,4 +1,4 @@
-import { TocHeading, TreeTocHeading } from '@/common/types'
+import { TocHeading, TreeTocHeading } from 'types'
 
 type MatchingCallbackType = (element: TreeTocHeading) => boolean
 

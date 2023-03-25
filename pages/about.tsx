@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next'
 import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import { getFileBySlug } from '@/lib/mdx'
-import { FrontMatter } from '@/common/types'
+import { FrontMatter } from 'types'
 
 const DEFAULT_LAYOUT = 'AboutLayout'
 

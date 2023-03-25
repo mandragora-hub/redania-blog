@@ -3,7 +3,7 @@ import BananaSlug from 'github-slugger'
 import { toString } from 'mdast-util-to-string'
 import { Heading } from 'mdast'
 import { Parent } from 'unist'
-import { TocHeading } from '@/common/types'
+import { TocHeading } from 'types'
 
 type OptionsProps = {
   exportRef: TocHeading[]

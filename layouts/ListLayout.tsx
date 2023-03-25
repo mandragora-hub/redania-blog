@@ -4,7 +4,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { useState } from 'react'
 import Pagination from '@/components/Pagination'
 import formatDate from '@/lib/utils/formatDate'
-import { FrontMatter } from '@/common/types'
+import { FrontMatter } from 'types'
 import BlogPostCard from '@/components/BlogPostCard'
 import SnippetPostCard from '@/components/SnippetPostCard'
 

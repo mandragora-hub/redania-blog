@@ -8,7 +8,7 @@ import siteMetadata from '@/data/siteMetadata'
 import Comments from '@/components/comments'
 import TableOfContents from '@/components/TableOfContents'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
-import { TocHeading, AuthorFrontMatter, PostFrontMatter } from '@/common/types'
+import { TocHeading, AuthorFrontMatter, PostFrontMatter } from 'types'
 import DOMPurify from 'isomorphic-dompurify'
 import path from 'path'
 

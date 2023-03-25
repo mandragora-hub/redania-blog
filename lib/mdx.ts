@@ -23,7 +23,7 @@ import rehypeCitation from 'rehype-citation'
 import rehypePrismPlus from 'rehype-prism-plus'
 import rehypePresetMinify from 'rehype-preset-minify'
 import rehypeCodeTitles from './rehype-code-title'
-import { TocHeading, PostType, FrontMatter } from '@/common/types'
+import { TocHeading, PostType, FrontMatter } from 'types'
 
 const root = process.cwd()
 

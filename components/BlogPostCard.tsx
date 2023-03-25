@@ -1,7 +1,7 @@
 import Image from './Image'
 import Link from './Link'
 import formatDate from '@/lib/utils/formatDate'
-import { FrontMatter } from '@/common/types'
+import { FrontMatter } from 'types'
 import Tag from './Tag'
 
 const DEFAULT_IMAGE = '/static/images/time-machine.jpg'

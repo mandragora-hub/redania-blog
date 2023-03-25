@@ -7,7 +7,7 @@ import siteMetadata from '@/data/siteMetadata'
 import formatDate from '@/lib/utils/formatDate'
 import Comments from '@/components/comments'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
-import { PostFrontMatter } from '@/common/types'
+import { PostFrontMatter } from 'types'
 
 type PostSimpleProps = {
   frontMatter: PostFrontMatter

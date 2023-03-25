@@ -9,7 +9,7 @@ import { getAllTags } from '@/lib/tags'
 import kebabCase from '@/lib/utils/kebabCase'
 import fs from 'fs'
 import path from 'path'
-import { PostFrontMatter } from '@/common/types'
+import { PostFrontMatter } from 'types'
 
 const root = process.cwd()
 

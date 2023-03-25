@@ -3,7 +3,7 @@ import SocialIcon from '@/components/social-icons'
 import Image from '@/components/Image'
 import Link from '@/components/Link'
 import { PageSEO } from '@/components/SEO'
-import { AuthorFrontMatter } from '@/common/types'
+import { AuthorFrontMatter } from 'types'
 import TextScramble from '@/components/TextScramble'
 
 type AboutLayoutProps = {

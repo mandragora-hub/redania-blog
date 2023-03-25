@@ -9,7 +9,7 @@ import Pre from './Pre'
 import Table from './Table'
 import { BlogNewsletterForm } from './NewsletterForm'
 import { MDXComponents as MDXComponentsBasicProps } from 'mdx/types'
-import { TocHeading, FrontMatter } from '@/common/types'
+import { TocHeading, FrontMatter } from 'types'
 
 export type MDXComponentsWrapperProps = {
   layout?: string

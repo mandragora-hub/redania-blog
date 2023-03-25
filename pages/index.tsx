@@ -5,7 +5,7 @@ import BlogPostCard from '@/components/BlogPostCard'
 import siteMetadata from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import NewsletterForm from '@/components/NewsletterForm'
-import { PostFrontMatter } from '@/common/types'
+import { PostFrontMatter } from 'types'
 
 const MAX_DISPLAY = 6
 

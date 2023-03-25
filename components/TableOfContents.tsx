@@ -1,4 +1,4 @@
-import { TocHeading, TreeTocHeading } from '@/common/types'
+import { TocHeading, TreeTocHeading } from 'types'
 import React from 'react'
 import useReadingProgress from '@/hooks/useReadingProgress'
 import useScrollSpy from '@/hooks/useScrollSpy'
