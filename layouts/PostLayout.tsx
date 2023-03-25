@@ -82,7 +82,7 @@ export default function PostLayout({
           </header>
           <div className="divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:divide-y-0">
             {images && (
-              <div className="flex relative flex-col items-center">
+              <div className="relative flex flex-col items-center">
                 <img
                   className="my-4 mx-auto overflow-hidden rounded-lg object-cover shadow-lg md:w-3/4"
                   alt={path.parse(images[0]).name}
