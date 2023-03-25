@@ -19,7 +19,7 @@ const SnippetPostCard = ({ title, summary, href, date, tags }: Props) => (
           </time>
         </div>
 
-        <p className="text-sm tracking-wider text-gray-600 dark:text-gray-300">{summary}</p>
+        <p className="pt-2 text-sm tracking-wider text-gray-600 dark:text-gray-300">{summary}</p>
       </div>
     </Link>
   </div>
