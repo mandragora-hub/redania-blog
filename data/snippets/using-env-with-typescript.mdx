@@ -1,0 +1,31 @@
+---
+title: '🧭️ Using .env with typescript'
+date: '2023-03-25'
+tags: ['typescript', 'process.env', 'intellisense']
+draft: false
+summary: Every time that I begin a new typescript project I need to search how to use process.env
+---
+
+Every time that I begin a new typescript project I need to search how to use process.env, 
+I mean how to make environment variables available for code completion (intellisense), 
+and then I question myself: "when typescript will infer the environment variables in .env". 
+I'm sure that this feature will become some day. 
+
+Meanwhile we have this solution. To use this trick we need to have `@types/node` installed. 
+Then create the following file in the root of the project.
+
+```ts title="environment.d.ts"
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv {
+      SPECIAL_TOKEN: string;
+      NODE_ENV: 'development' | 'production';
+      PORT?: number;
+    }
+  }
+}
+
+// If this file has no import/export statements (i.e. is a script)
+// convert it into a module by adding an empty export statement.
+export {}
+```

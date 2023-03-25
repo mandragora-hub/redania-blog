@@ -1,0 +1,37 @@
+---
+title: '🚧️ How to cast string to boolean - Booleanify'
+date: '2023-03-24'
+tags: ['typescript', 'booleanify', 'javascript']
+draft: false
+summary: Sometime we need to cast string into boolean but with got some unexpected behavior in javascript and typescript
+---
+
+Sometime we need to cast string into boolean but with got some unexpected behavior in javascript and typescript. For example suppose that you have a environment variable in .env.
+
+```env title=".env"
+ENABLE_SOME_CONDITIONALLY=false
+```
+
+```ts
+const isEnableSomeConditionally = process.env.ENABLE_SOME_CONDITIONALLY
+console.log(isEnableSomeConditionally) // "false" *obviously a string
+
+// Now we want to cast to boolean
+const boolean = Boolean(isEnableSomeConditionally)
+console.log(boolean) // Suprise! we got a "true". that means that boolean can't cast value
+```
+
+To solve this tortuous problem we can define the next utility function and use every time that we need to cast a value to a boolean
+
+
+```ts title="booleanify.ts"
+const booleanify = (value: string): boolean => {
+  const truthy: string[] = ['true', 'True', '1'];
+
+  return truthy.includes(value);
+};
+
+export default booleanify;
+```
+
+I saw some special and creative solutions for this issue, but I feel comfortable with this way to solve that
